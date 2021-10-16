@@ -4,5 +4,5 @@ local/
 .png
 .h5
 covid_dataset/
-checkpoints/
-archive/
+program/checkpoints/
+program/archive/
