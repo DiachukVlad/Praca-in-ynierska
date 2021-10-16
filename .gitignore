@@ -1,8 +1,9 @@
 local/
-.pdf
-.npy
-.png
-.h5
+*.pdf
+*.npy
+*.png
+*.h5
 covid_dataset/
 program/checkpoints/
 program/archive/
+program/.ipynb_checkpoints
