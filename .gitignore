@@ -11,3 +11,4 @@ program/.ipynb_checkpoints
 *.aux
 *.gz
 *.log
+*.idx
