@@ -10,3 +10,4 @@ program/.ipynb_checkpoints
 *.h5
 *.aux
 *.gz
+*.log
