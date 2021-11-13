@@ -1,9 +1,24 @@
 \begin{thebibliography}{1}
 
-\bibitem{Goasdasd}
-Arurien Geron.
-\newblock {\em Uczenie sieci neuronowych za pomocą Scykit-Learning i
-  TensorFlow}.
+\bibitem{neuroscience}
+M.~Bear, B.~Connors, and M.A. Paradiso.
+\newblock {\em Neuroscience: Exploring the Brain, Enhanced Edition: Exploring
+  the Brain, Enhanced Edition}.
+\newblock Jones \& Bartlett Learning, 2020.
+
+\bibitem{geron}
+Aurelien Geron.
+\newblock {\em Uczenie maszynowe z użyciem Scykit-Learning i TensorFlow}.
 \newblock MIT Press, 2016.
+
+\bibitem{neuron_bio}
+Anna~Lorenc i~Jarek~BrykDelta.
+\newblock {\em Komórka biologiczna}.
+\newblock 2005.
+
+\bibitem{mcculloch1943logical}
+W.S. Mcculloch and W.~Pitts.
+\newblock {\em A Logical Calculus of the Ideas Immanent in Nervous Activity}.
+\newblock University Press, 1943.
 
 \end{thebibliography}
