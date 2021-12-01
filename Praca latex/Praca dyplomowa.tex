@@ -108,123 +108,135 @@ $ \mathcal{H}(...) $ -- funkcja skokowa Heaviside`a\newline
 
 %===================================================================================
 \section{Funkcji aktywacji użyte w pracy}
-\begin{tikzpicture}
-	\begin{axis}[
-		axis lines=middle,
-		xlabel=$x$,
-		ylabel={$y$},
-		xmin=-3, xmax=3,
-		ymin=-1.5, ymax=1.5,
-		xtick={-1, 0, 1},
-		ytick={0, 1},
-		extra y ticks={-1},
-		extra y tick style={
-			tick label style={anchor=west, xshift=3pt},
-		},
-		function line/.style={
-			red,
-			thick,
-			samples=2,
-		},
-		single dot/.style={
-			red,
-			mark=*,
-		},
-		empty point/.style={
-			only marks,
-			mark=*,
-			mark options={fill=white, draw=black},
-		},
-		]
-		\addplot[function line, domain=\pgfkeysvalueof{/pgfplots/xmin}:0] {-1};
-		\addplot[function line, domain=0:\pgfkeysvalueof{/pgfplots/xmax}] {1};
-		\addplot[single dot] coordinates {(0, 0)};
-		\addplot[empty point] coordinates {(0, -1) (0, 1)};
-	\end{axis}
-\end{tikzpicture}
 
-\begin{tikzpicture}
-	\begin{axis}[
-		axis lines=middle,
-		xlabel=$x$,
-		ylabel={$y$},
-		xmin=-3,
-		xmax=3,
-		xtick={-1, 0, 1},
-		axis x line=bottom,
-		ytick={0,1},
-		ymax=1.5,
-		axis y line=middle,
-		function line/.style={
-			red,
-			thick,
-			samples=2,
-		},
-		single dot/.style={
-			red,
-			mark=*,
-		},
-		empty point/.style={
-			only marks,
-			mark=*,
-			mark options={fill=white, draw=black},
-		},
-		]
-		\addplot[function line, domain=\pgfkeysvalueof{/pgfplots/xmin}:0] {0};
-		\addplot[function line, domain=0:\pgfkeysvalueof{/pgfplots/xmax}] {1};
-		\addplot[single dot] coordinates {(0, 0)};
-		\addplot[empty point] coordinates {(0, 1)};
-	\end{axis}
-\end{tikzpicture}
+\begin{center}
+	Signum\newline
+	\begin{tikzpicture}
+		\begin{axis}[
+			axis lines=middle,
+			xlabel=$x$,
+			ylabel={$y$},
+			xmin=-3, xmax=3,
+			ymin=-1.5, ymax=1.5,
+			xtick={-1, 0, 1},
+			ytick={0, 1},
+			extra y ticks={-1},
+			extra y tick style={
+				tick label style={anchor=west, xshift=3pt},
+			},
+			function line/.style={
+				red,
+				thick,
+				samples=2,
+			},
+			single dot/.style={
+				red,
+				mark=*,
+			},
+			empty point/.style={
+				only marks,
+				mark=*,
+				mark options={fill=white, draw=black},
+			},
+			]
+			\addplot[function line, domain=\pgfkeysvalueof{/pgfplots/xmin}:0] {-1};
+			\addplot[function line, domain=0:\pgfkeysvalueof{/pgfplots/xmax}] {1};
+			\addplot[single dot] coordinates {(0, 0)};
+			\addplot[empty point] coordinates {(0, -1) (0, 1)};
+		\end{axis}
+	\end{tikzpicture}
+\end{center}
 
-\begin{tikzpicture}
-	\begin{axis}[
-		axis lines=middle,
-		xlabel=$x$,
-		ylabel=$y$,
-		xmin=-3, xmax=3,
-		ymin=-3, ymax=3,
-		xtick={1, 0},
-		ytick={0, 1},
-		function line/.style={
-			red,
-			thick,
-			samples=2,
-		},
-		single dot/.style={
-			red,
-			mark=*,
-		},
-		empty point/.style={
-			only marks,
-			mark=*,
-			mark options={fill=white, draw=black},
-		},
-		]
-		\addplot[function line, domain=\pgfkeysvalueof{/pgfplots/xmin}:0] {0};
-		\addplot[function line, domain=0:\pgfkeysvalueof{/pgfplots/xmax}] {x};
-	\end{axis}
-\end{tikzpicture}
+\begin{center}
+	Funkcja skokowa Heaviside`a\newline
+	\begin{tikzpicture}
+		\begin{axis}[
+			axis lines=middle,
+			xlabel=$x$,
+			ylabel={$y$},
+			xmin=-3,
+			xmax=3,
+			xtick={-1, 0, 1},
+			axis x line=bottom,
+			ytick={0,1},
+			ymax=1.5,
+			axis y line=middle,
+			function line/.style={
+				red,
+				thick,
+				samples=2,
+			},
+			single dot/.style={
+				red,
+				mark=*,
+			},
+			empty point/.style={
+				only marks,
+				mark=*,
+				mark options={fill=white, draw=black},
+			},
+			]
+			\addplot[function line, domain=\pgfkeysvalueof{/pgfplots/xmin}:0] {0};
+			\addplot[function line, domain=0:\pgfkeysvalueof{/pgfplots/xmax}] {1};
+			\addplot[single dot] coordinates {(0, 0)};
+			\addplot[empty point] coordinates {(0, 1)};
+		\end{axis}
+	\end{tikzpicture}
+\end{center}
 
-\begin{tikzpicture}[declare function={sigma(\x)=1/(1+exp(-\x));
-		sigmap(\x)=sigma(\x)*(1-sigma(\x));}]
-	\begin{axis}%
-		[     
-		xmin=-6,
-		xmax=6,
-		axis x line=bottom,
-		ytick={0,.5,1},
-		ymax=1,
-		axis y line=middle,
-		samples=100,
-		domain=-6:6,
-		legend style={at={(1,0.9)}}     
-		]
-		\addplot[red,mark=none]   (x,{sigma(x)});
-		\addplot[blue,dotted,mark=none]   (x,{sigmap(x)});
-		\legend{$\sigma(x)$,$\sigma'(x)$}
-	\end{axis}
-\end{tikzpicture}
+\begin{center}
+	\begin{tikzpicture}
+		\begin{axis}[
+			axis lines=middle,
+			xlabel=$x$,
+			ylabel=$y$,
+			xmin=-3, xmax=3,
+			ymin=-3, ymax=3,
+			xtick={1, 0},
+			ytick={0, 1},
+			function line/.style={
+				red,
+				thick,
+				samples=2,
+			},
+			single dot/.style={
+				red,
+				mark=*,
+			},
+			empty point/.style={
+				only marks,
+				mark=*,
+				mark options={fill=white, draw=black},
+			},
+			]
+			\addplot[function line, domain=\pgfkeysvalueof{/pgfplots/xmin}:0] {0};
+			\addplot[function line, domain=0:\pgfkeysvalueof{/pgfplots/xmax}] {x};
+		\end{axis}
+	\end{tikzpicture}	
+\end{center}
+
+\begin{center}
+	\begin{tikzpicture}[declare function={sigma(\x)=1/(1+exp(-\x));
+			sigmap(\x)=sigma(\x)*(1-sigma(\x));}]
+		\begin{axis}%
+			[     
+			xmin=-6,
+			xmax=6,
+			axis x line=bottom,
+			ytick={0,.5,1},
+			ymax=1,
+			axis y line=middle,
+			samples=100,
+			domain=-6:6,
+			legend style={at={(1,0.9)}}     
+			]
+			\addplot[red,mark=none]   (x,{sigma(x)});
+			\addplot[blue,dotted,mark=none]   (x,{sigmap(x)});
+			\legend{$\sigma(x)$,$\sigma'(x)$}
+		\end{axis}
+	\end{tikzpicture}
+\end{center}
+
 
 %===================================================================================
 \section{Sieci neuronowe w klasyfikacji danych wizualnych}
