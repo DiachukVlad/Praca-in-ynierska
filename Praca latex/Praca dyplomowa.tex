@@ -1,8 +1,10 @@
 \documentclass{article}
 
+\usepackage{amssymb}
 \usepackage[polish]{babel}
 \usepackage[utf8]{inputenc}
 \usepackage{polski}
+
 
 \usepackage{amsmath}
 \DeclareMathOperator{\sgn}{sgn}
@@ -11,6 +13,9 @@
 \pgfplotsset{compat=1.17}
 
 \graphicspath{ {./images/} }
+\usepackage{lipsum}
+\usepackage{caption}
+\usepackage{float}
 
 \title{Klasyfikacja COVID-19 na zdjęciach rentgenowskich}
 \author{Vladyslav Diachuk s18901}
@@ -88,7 +93,7 @@ Kluczowe zmiany:
 	\item Używanie funkcji skokowej na końcu
 	\item Dodatkowe obciążeniowe wejście(zawsze wysyła wartość 1) z własną wagą, tak zwany bias
 \end{itemize}
-Jednostka wylicza ważoną sumę sygnałów wejściowych, a następnie zostaję użyta funkcja aktywacji. Najczęściej zostaje użyta funkcja skokowa Heaviside`a lub signum.Przy użyciu skokowej funkcji aktywacji taki neuron można nazywać progową jednostką logiczną lub liniową jednostką progową (ang. \textit{Linear Treshod Unit} -- LTU). Dziawanie tej jednoki można matematycznie opisać w następujący sposób.\newline\newline
+Jednostka wylicza ważoną sumę sygnałów wejściowych, a następnie zostaję użyta funkcja aktywacji. Najczęściej zostaje użyta funkcja skokowa Heaviside`a (Rysunek \ref{Heaviside}) lub signum (Rysunek \ref{Signum}) .Przy użyciu skokowej funkcji aktywacji taki neuron można nazywać progową jednostką logiczną lub liniową jednostką progową (ang. \textit{Linear Treshod Unit} -- LTU). Dziawanie tej jednoki można matematycznie opisać w następujący sposób.\newline\newline
 $ y = \mathcal{H}(W^{T}X + b) $\newline \newline
 Gdzie: \newline
 X -- wektor wejść. \newline
@@ -97,146 +102,98 @@ b -- bias. \newline
 y -- wyjście neuronu. \newline
 $ \mathcal{H}(...) $ -- funkcja skokowa Heaviside`a\newline
 
-\begin{figure}[!ht]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=0.8\textwidth,keepaspectratio=true]{neuron_rosenblatta}
-	\caption{
+	\captionof{figure}{
 		Sztuczny neuron Franka Rosenblatta
 	}
 \end{figure}
 
 
+
+
 %===================================================================================
 \section{Funkcji aktywacji użyte w pracy}
 
-\begin{center}
-	Signum\newline
-	\begin{tikzpicture}
-		\begin{axis}[
-			axis lines=middle,
-			xlabel=$x$,
-			ylabel={$y$},
-			xmin=-3, xmax=3,
-			ymin=-1.5, ymax=1.5,
-			xtick={-1, 0, 1},
-			ytick={0, 1},
-			extra y ticks={-1},
-			extra y tick style={
-				tick label style={anchor=west, xshift=3pt},
-			},
-			function line/.style={
-				red,
-				thick,
-				samples=2,
-			},
-			single dot/.style={
-				red,
-				mark=*,
-			},
-			empty point/.style={
-				only marks,
-				mark=*,
-				mark options={fill=white, draw=black},
-			},
-			]
-			\addplot[function line, domain=\pgfkeysvalueof{/pgfplots/xmin}:0] {-1};
-			\addplot[function line, domain=0:\pgfkeysvalueof{/pgfplots/xmax}] {1};
-			\addplot[single dot] coordinates {(0, 0)};
-			\addplot[empty point] coordinates {(0, -1) (0, 1)};
-		\end{axis}
-	\end{tikzpicture}
-\end{center}
+%-----------------------------------------------------------------------------------
+\subsection{Funkcja skokowa Heaviside’a}
+Funkcja skokowa Heaviside’a, skok jednostkowy – funkcja nieciągła, która przyjmuje wartość dla ujemnych argumentów i wartość 1 w pozostałych przypadkach:
 
-\begin{center}
-	Funkcja skokowa Heaviside`a\newline
-	\begin{tikzpicture}
-		\begin{axis}[
-			axis lines=middle,
-			xlabel=$x$,
-			ylabel={$y$},
-			xmin=-3,
-			xmax=3,
-			xtick={-1, 0, 1},
-			axis x line=bottom,
-			ytick={0,1},
-			ymax=1.5,
-			axis y line=middle,
-			function line/.style={
-				red,
-				thick,
-				samples=2,
-			},
-			single dot/.style={
-				red,
-				mark=*,
-			},
-			empty point/.style={
-				only marks,
-				mark=*,
-				mark options={fill=white, draw=black},
-			},
-			]
-			\addplot[function line, domain=\pgfkeysvalueof{/pgfplots/xmin}:0] {0};
-			\addplot[function line, domain=0:\pgfkeysvalueof{/pgfplots/xmax}] {1};
-			\addplot[single dot] coordinates {(0, 0)};
-			\addplot[empty point] coordinates {(0, 1)};
-		\end{axis}
-	\end{tikzpicture}
-\end{center}
+\begin{equation}
+	\mathcal{H}(x) = 
+	\begin{cases}
+		0 & \text{dla $x < 0$}\\
+		1 & \text{dla $x \geqslant 0$ }\\
+	\end{cases}    
+\end{equation}
 
-\begin{center}
-	\begin{tikzpicture}
-		\begin{axis}[
-			axis lines=middle,
-			xlabel=$x$,
-			ylabel=$y$,
-			xmin=-3, xmax=3,
-			ymin=-3, ymax=3,
-			xtick={1, 0},
-			ytick={0, 1},
-			function line/.style={
-				red,
-				thick,
-				samples=2,
-			},
-			single dot/.style={
-				red,
-				mark=*,
-			},
-			empty point/.style={
-				only marks,
-				mark=*,
-				mark options={fill=white, draw=black},
-			},
-			]
-			\addplot[function line, domain=\pgfkeysvalueof{/pgfplots/xmin}:0] {0};
-			\addplot[function line, domain=0:\pgfkeysvalueof{/pgfplots/xmax}] {x};
-		\end{axis}
-	\end{tikzpicture}	
-\end{center}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.6\textwidth,keepaspectratio=true]{Heaviside}
+	\caption{
+		Funkcja skokowa Heaviside’a
+	}
+	\label{Heaviside}
+\end{figure}
 
-\begin{center}
-	\begin{tikzpicture}[declare function={sigma(\x)=1/(1+exp(-\x));
-			sigmap(\x)=sigma(\x)*(1-sigma(\x));}]
-		\begin{axis}%
-			[     
-			xmin=-6,
-			xmax=6,
-			axis x line=bottom,
-			ytick={0,.5,1},
-			ymax=1,
-			axis y line=middle,
-			samples=100,
-			domain=-6:6,
-			legend style={at={(1,0.9)}}     
-			]
-			\addplot[red,mark=none]   (x,{sigma(x)});
-			\addplot[blue,dotted,mark=none]   (x,{sigmap(x)});
-			\legend{$\sigma(x)$,$\sigma'(x)$}
-		\end{axis}
-	\end{tikzpicture}
-\end{center}
 
+%-----------------------------------------------------------------------------------
+\subsection{Signum}
+Signum, sgn (łac. signum „znak”) – funkcja zmiennej rzeczywistej, zdefiniowana następująco:
+\begin{equation}
+	sgn(x) = 
+	\begin{cases}
+		-1 & \text{dla $x < 0$}\\
+		0 & \text{dla $x = 0$}\\
+		1 & \text{dla $x > 0$}\\
+	\end{cases}    
+\end{equation}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.6\textwidth,keepaspectratio=true]{Signum}
+	\caption{
+		Signum
+	}
+	\label{Signum}
+\end{figure}
+
+
+%-----------------------------------------------------------------------------------
+\subsection{Sigmoid}
+Funkcja sigmoidalna jest funkcją matematyczną mającą charakterystyczną krzywą w kształcie litery „S” lub krzywą sigmoidalną.
+Typowym przykładem funkcji sigmoidalnej jest funkcja logistyczna pokazana na rysunku \ref{Sigmoid} i zdefiniowana wzorem: 
+
+$S(x) = \dfrac{1}{1 + e^{-x}}$
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.6\textwidth,keepaspectratio=true]{Sigmoid}
+	\caption{
+		Sigmoid
+	}
+	\label{Sigmoid}
+\end{figure}
+
+%-----------------------------------------------------------------------------------
+\subsection{ReLU}
+Kolejną, popularną funkcją aktywacji jest ReLU (rectifier Linear Unit). Od swojego kształtu w mowie potocznej często nazywana jest funkcją rampy (bo i rzeczywiście - wygląda jak rampa).
+\begin{equation}
+	ReLU(x) = 
+	\begin{cases}
+		0 & \text{dla $x < 0$}\\
+		x & \text{dla $x \geqslant 0$ }\\
+	\end{cases}    
+\end{equation}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.6\textwidth,keepaspectratio=true]{ReLu}
+	\caption{
+		ReLU
+	}
+\end{figure}
 
 %===================================================================================
 \section{Sieci neuronowe w klasyfikacji danych wizualnych}
