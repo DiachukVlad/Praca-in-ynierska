@@ -12,3 +12,5 @@ program/.ipynb_checkpoints
 *.gz
 *.log
 *.idx
+
+!/Praca\ latex/images/*
