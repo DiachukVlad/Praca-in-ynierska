@@ -5,6 +5,8 @@
 \usepackage[utf8]{inputenc}
 \usepackage{polski}
 \usepackage{geometry}
+\usepackage{graphicx}
+
 \geometry{
 	a4paper,
 	left=30mm,
@@ -33,6 +35,8 @@
 \makeindex
 \begin{document}
 \maketitle
+
+%napisać że default obrazki są z książki gerona
 
 %===================================================================================
 \section{Wstęp}
@@ -118,6 +122,8 @@ $ \mathcal{H}(...) $ -- funkcja skokowa Heaviside`a\newline
 \end{figure}
 
 
+%===================================================================================
+\section{Sieć neuronowa}
 
 
 %===================================================================================
@@ -207,106 +213,114 @@ Kolejną, popularną funkcją aktywacji jest ReLU (rectifier Linear Unit). Od sw
 \end{figure}
 
 %===================================================================================
-\section{Sieci neuronowe w klasyfikacji danych wizualnych}
+\section{Splotowe sieci neuronowe}
 Jak wiadomo do wizji komputerowej już od dawna używają sieci neuronowe. Ale jeśli używać do tego zwykłych neuronów powiązanych w sieci feedforward, fully connected, to będziemy mieli za dużo wag. Przypuśćmy że mamy kolorowy obrazek 200x200 pikseli. Ilość pikseli będzie 200*200*3=120000. Już mamy bardzo dużo neuronów przecież to tylko warstwa wejściowa, Jeżeli następna warstwa będzie miała 512 neuronów (co jest rzeczywiście za mało), to w pierwszej warstwie będzie 61440000 wag. Jest to bardzo dużo. 
 Splotowe sieci, wymyśłone w latach 80 ubiegłego wieku, mogą ulepszyć sytuacje.
 
-
-\section{Splotowe sieci neuronowe}
-
-
 %-----------------------------------------------------------------------------------
 \subsection{Struktura kory wzrokowej}
-David H. Hubel i Torsten Wiesel przeprowadzili szereg eksperymentów na kotach w latach 1958 \cite{David_1958} i 1959 \cite{David_1959} (a kilka lat później takte na mal pach, http://physoc.onlinelibrary.wiley.com/dos/epd/10.1113/physiol.1968 sp008 455), dzięki którym po znaliśmy strukturę kory wzrokowej (autorzy swój wklad w rozwój nauki otrzymali w 1981 roka Nagrodę Nobla w dziedzinie fizjologii lub medycyny). Udowodnili oni w szczególności, że wiele neuronów skladających się na korę wzrokową wyznacza lokalne pola recepcyjne, tzn. że reagują jedy nie na bodźce wzrokowe mieszczące się w określonym rejonie pola wzrokowego (zobacz rysunek 11, na którym lokalne pola recepcyjne pięciu neuronów zostały ukazane w postaci przerywanych okre gów). Pola recepcyjne poszczególnych neuronów mogą się na siebie nakładać i łącznie tworzą cale pole wzrokowe \cite{geron}
+David H. Hubel i Torsten Wiesel przeprowadzili szereg eksperymentów na kotach w latach 1958 \cite{David_1958} i 1959 \cite{David_1959}, dzięki którym poznaliśmy strukturę kory wzrokowej. Udowodnili oni w szczególności, że wiele neuronów składających się na korę wzrokową wyznacza lokalne pola recepcyjne, tzn. że reagują jedynie na bodźce wzrokowe mieszczące się w określonym rejonie pola wzrokowego (Rysunek \ref{kora_wzrokowa}). Pola recepcyjne poszczególnych neuronów mogą się na siebie nakładać i łącznie tworzą cale pole wzrokowe \cite{geron}
 
-Do tego badacze pokazali także, że pewne neurony reagują wyłącznie na obrazy składające się z linii poziomych, a inne są pobudzane przez linie ulożone w inny sposób (dwa neurony mogą mieč to samo pole recepcyjne, ale reagować na inne ulożenie linii). Zauważono także, że niektóre komerk nerwowe mają większe pola recepcyjne i wykrywają bardziej skomplikowane kształty, stanowiące po lączenie bardziej ogólnych wzorów. Poczynione obserwacje doprowadziły badaczy do wniosku, be neurony odpowiedzialne za rozpoznawanie bardziej skomplikowanych kształtów znajdują się na wyj ściu sąsiadujących neuronów reagujących na prostsze bodźce wzrokowe (zwróć uwagę, że na ry sunku 14.1 każdy neuron jest połączony tylko z kilkoma neuronamiz niższej warstwy). Taka archi tektura pozwala wykrywać wszelkie rodzaje skomplikowanych kształtów w obszarze pola wzrokowego. \cite{geron}
+Do tego badacze pokazali także, że pewne neurony reagują wyłącznie na obrazy składające się z linii poziomych, a inne są pobudzane przez linie ułożone w inny sposób (dwa neurony mogą mieć to samo pole recepcyjne, ale reagować na inne ułożenie linii). Zauważono także, że niektóre komórki nerwowe mają większe pola recepcyjne i wykrywają bardziej skomplikowane kształty, stanowiące połączenie bardziej ogólnych wzorów. Poczynione obserwacje doprowadziły badaczy do wniosku, że neurony odpowiedzialne za rozpoznawanie bardziej skomplikowanych kształtów znajdują się na wyjściu sąsiadujących neuronów reagujących na prostsze bodźce wzrokowe (na rysunku \ref{kora_wzrokowa} każdy neuron jest połączony tylko z kilkoma neuronami z niższej warstwy). Taka archi tektura pozwala wykrywać wszelkie rodzaje skomplikowanych kształtów w obszarze pola wzrokowego. \cite{geron}
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.6\textwidth,keepaspectratio=true]{kora_wzrokowa}
 	\caption{}
+	\label{kora_wzrokowa}
 \end{figure}
 
 %-----------------------------------------------------------------------------------
 \subsection{Warstwy splotowe}
-Najistotniejszym skladnikiem sieci CNN jest warstwa splotowa (konwolucyjna: ang comvolutional layer): neurony w pierwszej warstwie splotowej nie są połączone z każdym pikselem obrazu wejścio wego (w przeciwieństwie do sieci opisanych w poprzednich rozdzialach), lecz wyłącznie z pikselami znajdującymi się w ich polu recepcyjnym (rysunek 14.2). Z kolei każdy neuron w drugiej warstwie splotowej łączy się wyłącznie z neuronami znajdującymi się w niewielkim obszarze pierwszej war stwy. Dzięki temu sieć może koncentrować się na ogólnych cechach w pierwszej warstwie ukrytej, następnie lączyć je w bardziej złożone ksztalty w drugiej warstwie ukrytej itd. Taka hierarchiczna struktura jest powszechnie spotykana na zdjęciach, co stanowi jedną z przyczyn tak dużej skuteczności sieci CNN w rozpoznawaniu obrazów. \cite{geron}
+Najistotniejszym składnikiem sieci CNN jest warstwa splotowa (konwolucyjna): neurony w pierwszej warstwie splotowej nie są połączone z każdym pikselem obrazu wejściowego, lecz wyłącznie z pikselami znajdującymi się w ich polu recepcyjnym (rysunek \ref{warstwa_splotowa}). Z kolei każdy neuron w drugiej warstwie splotowej łączy się wyłącznie z neuronami znajdującymi się w niewielkim obszarze pierwszej warstwy. Dzięki temu sieć może koncentrować się na ogólnych cechach w pierwszej warstwie ukrytej, następnie łączyć je w bardziej złożone kształty w drugiej warstwie ukrytej itd. Taka hierarchiczna struktura jest powszechnie spotykana na zdjęciach, co stanowi jedną z przyczyn tak dużej skuteczności sieci CNN w rozpoznawaniu obrazów. \cite{geron}
 
-Do tej pory wszystkie analizowane przez nas wielowarstwowe sieci neuronowe mialy warstwy skladające się z dlugich rzędów neuronów, a przed przekazaniem obrazu do sieci musieliśmy go przeksztalcić do postaci jednowymiarowej. Od teraz każda warstwa będzie dwuwymiarowa, co ulatwi nam obserwowanie związków pomiędzy neuronami a ich danymi wejściowymi. \cite{geron}
+Do tej pory wszystkie analizowane przez nas wielowarstwowe sieci neuronowe miały warstwy składające się z długich rzędów neuronów, a przed przekazaniem obrazu do sieci musieliśmy go przekształcić do postaci jednowymiarowej. Od teraz każda warstwa będzie dwuwymiarowa, co ułatwi nam obserwowanie związków pomiędzy neuronami a ich danymi wejściowymi. \cite{geron}
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.6\textwidth,keepaspectratio=true]{warstwa_splotowa}
 	\caption{}
+	\label{warstwa_splotowa}
 \end{figure}
 
-\subsection{Padding}
-Neuron znajdujący się w wierszu i oraz kolumnie j danej warstwy jest połączony z wyjściami neuro now poprzedniej warstwy zlokalizowanymi w rzędach od i do i+fi-1 i kolumnach od j do j+f-1, gdzie f. i f. oznaczają, odpowiednio, wysokość i szerokość pola recepcyjnego (rysunek 14.3). W celu uzyskania takich samych wymiarów każdej warstwy najczęściej są dodawane zera wokól wejśé, co zo stalo pokazane na rysunku 14.3. Proces ten nazywamy uzupełnianiem zerami (ang, zero padding). \cite{geron}
+\subsection{Uzupełnianie zerami}
+Neuron znajdujący się w wierszu $i$ oraz kolumnie $j$ danej warstwy jest połączony z wyjściami neuronów poprzedniej warstwy zlokalizowanymi w rzędach od $i$ do $i+f_{h}-1$ i kolumnach od $j do j+f_{w}-1$, gdzie $f_{h}$ i $f_{w}$ oznaczają, odpowiednio, wysokość i szerokość pola recepcyjnego (rysunek \ref{padding}). W celu uzyskania takich samych wymiarów każdej warstwy najczęściej są dodawane zera wokół wejść, co zo stało pokazane na rysunku \ref{padding}. Proces ten nazywamy uzupełnianiem zerami (ang. \textit{zero padding}). \cite{geron}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.6\textwidth,keepaspectratio=true]{padding}
+	\caption{}
+	\label{padding}
+\end{figure}
 
-\subsection{Step}
-Możliwe jest również łączenie bardzo dużej warstwy wejściowej ze znacznie mniejszą kolejną warstwą poprzez rozdzielanie pól recepcyjnych, tak jak zaprezentowano na rysunku 14.4. Rozwiązanie to zmniejsza drastycznie złożoność obliczeniową modelu. Odległość pomiędzy dwoma kolejnymi polami recepcyjnymi nosi nazwę kroku (ang, stride). Na widocznym schemacie warstwa wejściowa o wymia rach 5x7 (plus uzupełnianie zerami) łączy się z warstwą o rozmiarze 3x4 za pomocą pól recepcyj nych będących kwadratami 3x3 i kroku o wartości 2 (w omawianym przykładzie krok jest taki sam \cite{geron}
-
-w obydwu wymiarach, ale nie jest to wcale regulą). Neuron zlokalizowany w rzędzie i oraz kolumnie j górnej warstwy łączy się z wyjściami neuronów dolnej warstwy mieszczącymi się w rzędach od ixs, do ixs+fi-1 iw kolumnach od jxs, do jxs.+f.-1. gdzie su i s, definiują wartości kroków od powiednio w kolumnach i rzędach. \cite{geron}
+\subsection{Krok}
+Możliwe jest również łączenie bardzo dużej warstwy wejściowej ze znacznie mniejszą kolejną warstwą poprzez rozdzielanie pól recepcyjnych, tak jak zaprezentowano na rysunku \ref{step}. Rozwiązanie to zmniejsza drastycznie złożoność obliczeniową modelu. Odległość pomiędzy dwoma kolejnymi polami recepcyjnymi nosi nazwę kroku (ang. \textit{stride}). Na widocznym schemacie warstwa wejściowa o wymiarach 5x7 (plus uzupełnianie zerami) łączy się z warstwą o rozmiarze $3 \times 4$ za pomocą pól recepcyjnych będących kwadratami $3 \times 3$ i kroku o wartości 2 (w omawianym przykładzie krok jest taki sam w obydwu wymiarach, ale nie jest to wcale regułą). Neuron zlokalizowany w rzędzie $i$ oraz kolumnie $j$ górnej warstwy łączy się z wyjściami neuronów dolnej warstwy mieszczącymi się w rzędach od $i\times s_{h}$, do $i \times s_{h}+f_{h}-1$ iw kolumnach od $j \times s_{w}$, do $j \times s_{w}+f_{w}-1$. gdzie $s_{h}$ i $s_{w}$, definiują wartości kroków odpowiednio w kolumnach i rzędach. \cite{geron}
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.6\textwidth,keepaspectratio=true]{step}
 	\caption{}
+	\label{step}
 \end{figure}
 %-----------------------------------------------------------------------------------
 \subsection{Filtry}
-Wagi neuronu mogą być przedstawiane jako niewielki obraz o rozmiarze pola recepcyjnego. Na przykład na rysunku 14.5 widzimy dwa możliwe zbiory wag, tak zwane filtry (lub jądra splotowe, ang, convolution kernels). Pierwszy filtr jest symbolizowany jako czarny kwadrat z białą pionową linią przechodzącą przez jego środek (jest to macierz o wymiarach 7x7 wypełniona zerami oprócz środkowej kolumny, która zawiera jedynki); neurony zawierające te wagi będą ignorować wszystkie elementy w polu recepcyjnym oprócz znajdujących się w środkowej pionowej linii (dane wejściowe znajdujące się poza tą linią będą przemnażane przez O). Drugi filtr wygląda podobnie; różnica polega na tym, że środkowa linia jest ułożona poziomo. Także w tym wypadku będą brane pod uwagę jedynie dane wejściowe znajdujące się w tej linii. \cite{geron}
+Wagi neuronu mogą być przedstawiane jako niewielki obraz o rozmiarze pola recepcyjnego. Na przykład na rysunku \ref{filters} widzimy dwa możliwe zbiory wag, tak zwane filtry (lub jądra splotowe, ang. \textit{convolution kernels}). Pierwszy filtr jest symbolizowany jako czarny kwadrat z białą pionową linią przechodzącą przez jego środek (jest to macierz o wymiarach $7 \times 7$ wypełniona zerami oprócz środkowej kolumny, która zawiera jedynki); neurony zawierające te wagi będą ignorować wszystkie elementy w polu recepcyjnym oprócz znajdujących się w środkowej pionowej linii (dane wejściowe znajdujące się poza tą linią będą przemnażane przez O). Drugi filtr wygląda podobnie; różnica polega na tym, że środkowa linia jest ułożona poziomo. Także w tym wypadku będą brane pod uwagę jedynie dane wejściowe znajdujące się w tej linii. \cite{geron}
 
-Jesli wszystkie neurony w danej warstwie będą korzystać z tego samego filtra pionowego" (i takiego
-samego członu obciążenia), a my wczytamy do sieci obraz zaprezentowany na dole rysunku 14.5,
-to uzyskamy obraz widoczny w lewym górnym rogu rysunku. Zauważ, że po zastosowaniu tego filtru
-pionowe białe linie stają się wyraźniej widoczne, natomiast pozostala część obrazu zostaje rozmazana.
-Na zasadzie analogii otrzymujemy obraz widoczny w prawym górnym rogu rysunku po zastosowa
-niu filtru poziomego"; teraz z kolei biale poziome linie zostają wyostrzone, a reszta obrazu ulegs
-ramazaniu. Zatem warstwa wypelniona neuronami wykorzystującymi ten sam filtr daje nam mape
-cech (ang, feature map), dzięki której możemy dostrzec elementy najbardziej przypominające dany
-filtr. Nie musisz oczywiście definiować filtrów własnoręcznie - sieć CNN w czasie uczenia wy
-szukuje filtry najbardziej przydatne do danego zadania i uczy się lączyć je w bardziej złożone
+Jeśli wszystkie neurony w danej warstwie będą korzystać z tego samego filtra pionowego" (i takiego samego członu obciążenia), a my wczytamy do sieci obraz zaprezentowany na dole rysunku \ref{filters},to uzyskamy obraz widoczny w lewym górnym rogu rysunku. Po zastosowaniu tego filtru pionowe białe linie stają się wyraźniej widoczne, natomiast pozostała część obrazu zostaje rozmazana. Na zasadzie analogii otrzymujemy obraz widoczny w prawym górnym rogu rysunku po zastosowaniu filtru poziomego"; teraz z kolei białe poziome linie zostają wyostrzone, a reszta obrazu ulega ramazanu. Zatem warstwa wypełniona neuronami wykorzystującymi ten sam filtr daje nam mapę cech (ang. \textit{feature map}), dzięki której możemy dostrzec elementy najbardziej przypominające dany filtr. Nie musisz oczywiście definiować filtrów własnoręcznie - sieć CNN w czasie uczenia wyszukuje filtry najbardziej przydatne do danego zadania i uczy się łączyć je w bardziej złożone
 wzorce. \cite{geron}
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.6\textwidth,keepaspectratio=true]{filters}
 	\caption{}
+	\label{filters}
 \end{figure}
 
 %-----------------------------------------------------------------------------------
 \subsection{Stosy map cech}
-Do tej pory dla uproszczenia przedstawialiśmy każdą warstwę splotową w postaci cienkiej, dwuwymia rowej warstwy, ale w rzeczywistości składa się ona z kilku map cech o identycznych rozmiarach, dlatego trójwymiarowe odwzorowanie jest bliższe rzeczywistości (rysunek 14.6). W zakresie jed nej mapy cech każdy neuron jest przydzielony do jednego piksela, a wszystkie tworzące ją neurony współdzielą te same parametry (wagi i człon obciążenia). Neurony w innych mapach cech mają od mienne wartości parametrów. Pole recepcyjne neuronu nie ulega zmianie, ale przebiega przez wszystkie mapy cech poprzednich warstw. Krótko mówiąc, warstwa splotowa równocześnie stosuje różne filtry na wejściach, dzięki czemu jest w stanie wykrywać wiele cech w dowolnym obszarze obrazu \cite{geron}
+Do tej pory dla uproszczenia przedstawialiśmy każdą warstwę splotową w postaci cienkiej, dwuwymiarowej warstwy, ale w rzeczywistości składa się ona z kilku map cech o identycznych rozmiarach, dlatego trójwymiarowe odwzorowanie jest bliższe rzeczywistości (rysunek \ref{stosy_map_cech}). W zakresie jednej mapy cech każdy neuron jest przydzielony do jednego piksela, a wszystkie tworzące ją neurony współdzielą te same parametry (wagi i człon obciążenia). Neurony w innych mapach cech mają odmienne wartości parametrów. Pole recepcyjne neuronu nie ulega zmianie, ale przebiega przez wszystkie mapy cech poprzednich warstw. Krótko mówiąc, warstwa splotowa równocześnie stosuje różne filtry na wejściach, dzięki czemu jest w stanie wykrywać wiele cech w dowolnym obszarze obrazu \cite{geron}
 
-Dzięki temu, że wszystkie neurony w mapie cech stosują te same parametry, znacznie zmniejsza się ich liczba w modelu, jednak co ważniejsze, oznacza to, że gdy sieć CNN nauczy się rozpoznawać wzorzec w jednym miejscu, będzie w stanie to robić również w innych lokacjach. Dla porównania, sieć GSN po nauczeniu się rozpoznawa nia wzorca w jednym miejscu nie potrafi tego przełożyć na inne obszary. \cite{geron}
+Dzięki temu, że wszystkie neurony w mapie cech stosują te same parametry, znacznie zmniejsza się ich liczba w modelu, jednak co ważniejsze, oznacza to, że gdy sieć CNN nauczy się rozpoznawać wzorzec w jednym miejscu, będzie w stanie to robić również w innych lokacjach. Dla porównania, sieć GSN po nauczeniu się rozpoznawania wzorca w jednym miejscu nie potrafi tego przełożyć na inne obszary. \cite{geron}
 
-Co więcej, obrazy wejściowe także składają się z kilku warstw podrzędnych, po jednej na każdy kanal barw (ang, color channel). Standardowo występują trzy kanały barw - czerwony, zielony i niebieski (ang, red, green, blue-RGB). Obrazy czarno-biale (w odcieniach szarości) zawierają tylko jeden kanał, ale istnieją też takie zdjęcia, które mogą mieć ich znacznie więcej - np. fotografie satelitarne utrwalające dodatkowe częstotliwości fal elektromagnetycznych (takie jak podczerwień). \cite{geron}
+Co więcej, obrazy wejściowe także składają się z kilku warstw podrzędnych, po jednej na każdy kanał barw (ang. \textit{color channel}). Standardowo występują trzy kanały barw - czerwony, zielony i niebieski (ang, red, green, blue-RGB). Obrazy czarno-białe (w odcieniach szarości) zawierają tylko jeden kanał, ale istnieją też takie zdjęcia, które mogą mieć ich znacznie więcej - np. fotografie satelitarne utrwalające dodatkowe częstotliwości fal elektromagnetycznych (takie jak podczerwień). \cite{geron}
 
-W szczególności neuron zlokalizowany w rzędzie i oraz kolumniej mapy cech k w danej warstwie splotowej I jest połączony z neuronami wcześniejszej warstwy 1-1 umieszczonymi w rzędach od ixs do ixs+f-1 i kolumnach od jxs,, do jxs.+f-1 we wszystkich mapach cech (warstwy 1-1). Zwróć uwagę, że wszystkie neurony znajdujące się w tym samym rzędzie i oraz kolumnie j, ale w innych mapach cech są połączone z wyjściami dokładnie tych samych neuronów poprzedniej warstwy. \cite{geron}
+W szczególności neuron zlokalizowany w rzędzie $i$ oraz kolumnie $j$ mapy cech $k$ w danej warstwie splotowej $l$ jest połączony z neuronami wcześniejszej warstwy $l-1$ umieszczonymi w rzędach od $i \times s_{h}$ do $i \times s_{h}+f_{h}-1$ i kolumnach od $j \times s_{w}$, do $j \times s+f_{w}-1$ we wszystkich mapach cech (warstwy $l-1$). Zwróć uwagę, że wszystkie neurony znajdujące się w tym samym rzędzie $i$ oraz kolumnie $j$, ale w innych mapach cech są połączone z wyjściami dokładnie tych samych neuronów poprzedniej warstwy. \cite{geron}
 
-Powyższy opis został podsumowany w równaniu 14.1: widoczny duży wzór matematyczny służy do obliczania wyniku danego neuronu w warstwie splotowej. Z powodu dużej liczby indeksów równanie to nie wygląda zbyt elegancko, ale za jego pomocą jesteśmy w stanie uzyskać sumę ważoną wszystkich danych wejściowych wraz z członem obciążenia, \cite{geron}
+Powyższy opis został podsumowany w równaniu \ref{conv_formula} widoczny duży wzór matematyczny służy do obliczania wyniku danego neuronu w warstwie splotowej. Z powodu dużej liczby indeksów równanie to nie wygląda zbyt elegancko, ale za jego pomocą jesteśmy w stanie uzyskać sumę ważoną wszystkich danych wejściowych wraz z członem obciążenia, \cite{geron}
+
+\begin{center}
+	\begin{equation}	
+		z_{i,j,k}=b_{k}
+		\sum_{u=0}^{f_{h}-1}\sum_{v=0}^{f_{w}-1}\sum_{k^\prime=0}^{f_{n^\prime}-1}
+		x_{i\prime,j\prime,k\prime}\cdot w_{u,v,k\prime,k}
+		\quad gdzie \left\{ \begin{array}{ll}
+			i^\prime = i \times s_{h}+u\\
+			j^\prime = j\times s_{w}+v
+		\end{array} \right.
+		\label{conv_formula}
+	\end{equation}
+	\ref{conv_formula}: Obliczanie wartości wyjściowej neuronu w warstwie splotowej
+\end{center}
+
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.6\textwidth,keepaspectratio=true]{stosy_map_cech}
 	\caption{}
+	\label{stosy_map_cech}
 \end{figure}
 
 %-----------------------------------------------------------------------------------
-\subsection{Warstwa łącza (Max pooling)}
-Gdy już wiemy, jak działa warstwa splotowa, zrozumienie mechanizmu kryjącego się za warstwami laczącymi (ang pooling layers) nie powinno stanowić problemu. Ich celem jest podpróbkowanie (ang, subsample tj. zmniejszenie) obrazu wejściowego w celu zredukowania obciążenia obliczeniowego. wykorzystania pamięci i liczby parametrów (a tym samym ograniczenia ryzyka przetrenowania). \cite{geron}
+\subsection{Warstwa łącząca (Max pooling)}
+Gdy już wiemy, jak działa warstwa splotowa, zrozumienie mechanizmu kryjącego się za warstwami łączącymi (ang. \textit{pooling layers}) nie powinno stanowić problemu. Ich celem jest pod próbkowanie (ang. \textit{subsample}) obrazu wejściowego w celu zredukowania obciążenia obliczeniowego. wykorzystania pamięci i liczby parametrów (a tym samym ograniczenia ryzyka przetrenowania). \cite{geron}
 
-Podobnie jak w przypadku warstw splotowych, każdy neuron stanowiący część warstwy lączącej lączy się z wyjściami określonej liczby neuronów warstwy poprzedniej, mieszczącej się w obszarze niewielkiego, prostokątnego pola recepcyjnego. Podobnie jak wcześniej, musimy tu rozmiar tego pola, wartość kroku, rodzaj uzupelniania zerami itd. Jednakże warstwa licząca nie zawiera tadnych wag: jej jedynym zadaniem jest gromadzenie danych wejściowych za pomocą jakiejś funk cji agregacyjnej, np. maksymalizującej lub uśredniającej. Na rysunku 14.8 widzimy najpopularniejszy rodzaj - maksymalizującą warstwę lączącą (ang, max pooling layer). W tym przykładzie korzystamy z jądra lączącego (ang pooling kernel) o rozmiarze 2x2, kroku o wartości 2 iz pominięciem uzupel niania zerami.Zwróć uwagę, że jedynie maksymalna wartość z każdego jądra zostaje przekazana do następnej warstwy natomiast pozostale wartości wejściowe zostają odrzucone. Na przykład w lewym dolnym polu recepcyjnym na rysunku 14.8 widzimy wartości wejściowe 1, 5, 3, 2, zatem tylko wartość maksymalna (5) zostanie przekazana do następnej warstwy. Z powodu kroku równego 2 obraz wyj ściowy ma szerokość i wysokość o połowę mniejsze w porównaniu do obrazu wejściowego (zaokrą glamy tu w dól. ponieważ nie korzystamy z uzupełniania zerami). \cite{geron}
+Podobnie jak w przypadku warstw splotowych, każdy neuron stanowiący część warstwy łączącej łączy się z wyjściami określonej liczby neuronów warstwy poprzedniej, mieszczącej się w obszarze niewielkiego, prostokątnego pola recepcyjnego. Podobnie jak wcześniej, musimy tu rozmiar tego pola, wartość kroku, rodzaj uzupełniania zerami itd. Jednakże warstwa licząca nie zawiera żadnych wag; jej jedynym zadaniem jest gromadzenie danych wejściowych za pomocą jakiejś funkcji agregacyjnej, np. maksymalizującej lub uśredniającej. Na rysunku \ref{max_pooling} widzimy najpopularniejszy rodzaj - maksymalizującą warstwę łączącą (ang. \textit{max pooling layer}). W tym przykładzie korzystamy z jądra łączącego (ang. \textit{pooling kernel}) o rozmiarze $2 \times 2$, kroku o wartości 2 iz pominięciem uzupełniania zerami. Jedynie maksymalna wartość z każdego jądra zostaje przekazana do następnej warstwy natomiast pozostałe wartości wejściowe zostają odrzucone. Na przykład w lewym dolnym polu recepcyjnym na rysunku \ref{max_pooling} widzimy wartości wejściowe 1, 5, 3, 2, zatem tylko wartość maksymalna (5) zostanie przekazana do następnej warstwy. Z powodu kroku równego 2 obraz wyjściowy ma szerokość i wysokość o połowę mniejsze w porównaniu do obrazu wejściowego (zaokrąglamy tu w dól. ponieważ nie korzystamy z uzupełniania zerami). \cite{geron}
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.6\textwidth,keepaspectratio=true]{max_pooling}
 	\caption{}
+	\label{max_pooling}
 \end{figure}
 
 %===================================================================================
 \section{Uczenie sztucznych sieci neuronowych}
 
-
-
-%===================================================================================
-\section{Architektura sieci w detekcji chorób płuc}
 
 
 
