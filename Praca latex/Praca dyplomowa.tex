@@ -84,6 +84,7 @@ Głównymi elementami neuronu są ciało komórki zawierające jądro i większo
 Neurony biologiczne generują krótkie impulsy elektryczne zwane sygnałami, które są przenoszone wzdłuż aksonów i powodują uwalnianie w synapsach sygnałów chemicznych zwanych neuroprzekaźnikami. Kiedy komórka nerwowa otrzymuje dostateczną liczbę neuroprzekaźników od innych neuronów w ciągu kilku milisekund, to sama zaczyna wysyłać własne sygnały elektryczne (w rzeczywistości jest to uzależnione od neuroprzekaźników, gdyż niektóre z nich hamują aktywność komórki nerwowej). \cite{geron}
 Zatem mechanizm działania poszczególnych neuronów jest dość prosty, tworzą one jednak rozległą sieć składającą się z miliardów komórek nerwowych, gdzie zazwyczaj jeden neuron łączy się z tysiącami innych. Dzięki tak olbrzymiej sieci zawierającej proste komórki nerwowe mogą być wykonywane skomplikowane obliczenia.
 
+%-----------------------------------------------------------------------------------
 \subsection{Sztuczny neuron}
 W 1943 przez Warren S. McCulloch i Walter Pitts było zaproponowano bardzo prostą reprezentację neuronu sztucznego. On ma co najmniej jedno binarne wejście i dokładnie jedno binarne wyjście. Wyjście zostanie aktywne tylko wtedy kiedy będzie aktywna określona liczba wejść. \cite{mcculloch1943logical} Tak prosty model daje nam bardzo duże możliwości. Twórcy udowodnili że za pomocą takich neuronów jesteśmy w stanie zaprotestować sieć która rozwiąże dowolne zadanie logiczne.
 
@@ -121,13 +122,8 @@ $ \mathcal{H}(...) $ -- funkcja skokowa Heaviside`a\newline
 	}
 \end{figure}
 
-
 %===================================================================================
-\section{Sieć neuronowa}
-
-
-%===================================================================================
-\section{Funkcji aktywacji użyte w pracy}
+\section{Funkcji użyte w pracy}
 
 %-----------------------------------------------------------------------------------
 \subsection{Funkcja skokowa Heaviside’a}
@@ -184,7 +180,7 @@ Typowym przykładem funkcji sigmoidalnej jest funkcja logistyczna pokazana na ry
 	\begin{center}
 		$S(x) = \dfrac{1}{1 + e^{-x}}$
 	\end{center}
-
+	
 	\centering
 	\includegraphics[width=0.6\textwidth,keepaspectratio=true]{Sigmoid}
 	\caption{
@@ -211,6 +207,135 @@ Kolejną, popularną funkcją aktywacji jest ReLU (rectifier Linear Unit). Od sw
 		ReLU
 	}
 \end{figure}
+
+%-----------------------------------------------------------------------------------
+\subsection{Softmax}
+Funkcja softmax przyjmuje jako dane wejściowe wektor z $K$ liczb rzeczywistych i normalizuje go do rozkładu prawdopodobieństwa składającego się z $K$ prawdopodobieństw proporcjonalnych do wykładników liczb wejściowych. Oznacza to, że przed zastosowaniem softmaxa niektóre składowe wektora mogą być ujemne lub większe niż jeden; i może nie sumować się do 1; ale po zastosowaniu softmaxu każdy składnik będzie w przedziale $[0,1]$, a składniki będą sumować się do 1, aby można je było interpretować jako prawdopodobieństwa. Co więcej, większe komponenty wejściowe będą odpowiadać większym prawdopodobieństwu.
+
+\begin{center}
+	\begin{equation}	
+		z = Softmax(t) = \mathcal{S}(t) = \dfrac{e^{t_i}}{\sum_{j=1}^{K}e^{t_j}}\text{\quad dla i = ,...,K.}
+		\label{softmax}
+	\end{equation}
+	\ref{softmax}: Obliczanie Softmax
+\end{center} 
+
+\begin{flushleft}
+	Gdzie:\newline
+	K -- ilość neuronów warstwy wyjściowej\newline
+	t -- wektor wyjść
+	
+\end{flushleft}
+
+%-----------------------------------------------------------------------------------
+\subsection{Entropia krzyżowa, Cross-Entropy}
+Entropia krzyżowa jest to funkcja kosztu. Oznacza odległość między dwoma rozkładami prawdopodobieństw.
+
+\begin{center}
+	\begin{equation}	
+		CE(z, y) = -\sum_{i=1}^{K}y_i \log z_i
+		\label{CrossEntropy}
+	\end{equation}
+	\ref{CrossEntropy}: Obliczanie entropii krzyżowej
+\end{center} 
+
+\begin{flushleft}
+	Gdzie:\newline
+	$z$, $y$ -- rozkłady prawdopodobieństw
+\end{flushleft}
+
+%===================================================================================
+\section{Sieć neuronowa}
+Sieć neuronowa to połączenie neuronów w jakiś sposób. Najbardziej popularne są sieci całkowicie powiązane, jednokierunkowe (ang. \textit{feedforward, fully connected})
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.6\textwidth,keepaspectratio=true]{feed_forward_network}
+	\caption{
+		Sieć neuronowa  
+	}
+	\label{feed_forward_network}
+\end{figure}
+
+Na rysunku \ref{feed_forward_network} jest pokazana sieć neuronowa skłądająca się z trzech warstw: jednej warstwy wejściowej, jednej wyjściowej i jednej ukrytej. Ukryta i wyjsciowa warstwy są podzielone na dwie fazy: nieliniową $X \rightarrow t_1; h_1 \rightarrow t_2$ i liniową $t_1 \rightarrow h_1; t_2 \rightarrow z$.
+
+\begin{flushleft}
+	$X$ -- wektor wejść (pierwszej warstwy) \newline
+	$W_1, W_2$ -- matrycy wag drugiej i trzeciej warstw \newline
+	$b_1, b_2$ -- wektory wag biasów drugiej i trzeciej warstw \newline
+	$t_1, t_2$ -- liniowe wyjścia drugiej i trzeciej warstw \newline
+	$h_1$ -- nieliniowe wyjście drugiej warstwy \newline
+	$z$ -- wyjście Softmax \newline
+	$E$ -- skalar błędu
+\end{flushleft}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.6\textwidth,keepaspectratio=true]{feed_forward_graph}
+	\caption{
+		Graf obliczenia wyjścia sieci i błędu  
+	}
+	\label{feed_forward_graph}
+\end{figure}
+
+\begin{flushleft}
+Obliczamy wszystko po kolei. Jest sprawą dość prostą. Dla obliczenia wektora wyjścia z każdej warstwy sieci potrzebujemy mieć matrycy wag i wektory biasów. Najcięższej one są inicjalizowane losowo
+
+$t_1 = XW_1 + b_1;$\newline
+$h_1 = F(t_1);$\newline
+$t_2 = h_1W_2 + b_2;$\newline
+$z = \mathcal{S}(t_2);$\newline
+$E = CE(z,y);$
+
+\end{flushleft}
+
+
+%===================================================================================
+\section{Nadzorowane uczenie sztucznych sieci neuronowych}
+Proces uczenia sieci polega na tym że zmieniamy wagi neuronów i biasów w sposób który prowadzi do zmniejszenia błędu na wyjściu sieci. Zmierzyć ten błąd nie jest trudno, wyżej to już zostało opisane. Uczenie składa się z dwóch etapów: etapu obliczenia gradientu i etapu optymizacji wag. 
+Dla pierwszego etapu w swojej prace używam algorytmu propagacji wstecznej (ang. \textit{back propagation}). Natomiast dla etapu optymizacji używam optymizatora Adaptive Moment Estimation (Adam)
+
+%===================================================================================
+\section{Propagacja wsteczna}
+Algorytm propagacji wstecznej stanowi dzisiaj podstawowy algorytm uczenia nadzorowanego wielowarstwowych jednokierunkowych sieci neuronowych. Podaje on przepis na zmianę wag w dowolnych połączeń elementów przetwarzających rozmieszczonych w sąsiednich warstwach sieci jednokierunkowej. Jest to algorytm oparty na minimalizacji sumy kwadratów błędów uczenia. Dzięki zastosowaniu specyficznego sposobu propagowania błędów uczenia sieci powstałych na jej wyjściu, tzn. przesyłania ich od warstwy wyjściowej do wejściowej, algorytm propagacji wstecznej stał się jednym z najskuteczniejszych algorytmów uczenia sieci. \cite{nn_jozef}
+
+%-----------------------------------------------------------------------------------
+\subsection{Znależenie gradientu ostatniej warstwy}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.3\textwidth,keepaspectratio=true]{feed_forward_error}
+	\caption{}
+	\label{feed_forward_error}
+\end{figure}
+
+$z = Softamx(t) = \mathcal{S}(t)= \frac{e^{t_i}}{\sum_{j=1}e^{t_i}}$ \\
+$E = CrossEntropy(z, y) = -\sum_{i=1}y_i\log z_i$\\
+$E = CE(\mathcal{S}(t),y)=-\sum_{i=1}y_i\log\frac{e^{t_i}}{\sum_{j=1}e^{t_i}}$\\
+$= -\sum_{i=1}y_i(t_i-\log \sum_{j=1}e^{t_i}) = = -\sum_{i=1}y_it_i + \sum_{i=1}y_i\log\sum_{j=1}e^{t_i}$\\
+$= -\sum_{i=1}y_it_i + \log\sum_{j=1}e^{t_i}$\\
+$\frac{\delta E}{\delta t_k} = -y_k + \frac{1}{\sum_{j=1}e^{t_j}}\cdot e^{t_k} = \mathcal{S}_k - y_k$\\
+$\frac{\delta E}{\delta t} = \mathcal{S}(t) - y = z - y$
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.6\textwidth,keepaspectratio=true]{gradient_graph}
+	\caption{Graf obliczenia gradientu}
+	\label{gradien_graph}
+\end{figure}
+
+\begin{flushleft}
+Obrahunki:\\
+$\dfrac{\delta E}{\delta t_2} = S(t_2)-y=z-y$\\
+\vspace{5mm}
+$\dfrac{\delta E}{\delta W_2} = h_1^T \cdot \dfrac{\delta E}{\delta t_2}$\\
+$\dfrac{\delta E}{\delta b_2} = \dfrac{\delta E}{\delta t_2}$\\
+\vspace{5mm}
+$\dfrac{\delta E}{\delta h_1} = \dfrac{\delta E}{\delta t_2} \cdot W_2^T$\\
+$\dfrac{\delta E}{\delta t_1} = \dfrac{\delta E}{\delta h_1} \odot F^\prime (t_1)$\\
+\vspace{5mm}
+$\dfrac{\delta E}{\delta W_1} = X^T \cdot \dfrac{\delta E}{\delta t_1}$\\
+$\dfrac{\delta E}{\delta b_1} = \dfrac{\delta E}{\delta t_1}$
+\end{flushleft}
 
 %===================================================================================
 \section{Splotowe sieci neuronowe}
@@ -318,13 +443,27 @@ Podobnie jak w przypadku warstw splotowych, każdy neuron stanowiący część w
 	\label{max_pooling}
 \end{figure}
 
-%===================================================================================
-\section{Uczenie sztucznych sieci neuronowych}
-
-
-
-
 \bibliography{bibliografia}
-
 	
 \end{document}
+
+
+%===================================================================================
+\section{Implementacja}
+
+%-----------------------------------------------------------------------------------
+\subsection{Ostateczna struktura sieci}
+
+%-----------------------------------------------------------------------------------
+\subsection{Historia uczenia}
+
+%-----------------------------------------------------------------------------------
+\subsection{Stosy map cech}
+
+%-----------------------------------------------------------------------------------
+\subsection{Statystyki używania filtrów splotowych}
+
+%-----------------------------------------------------------------------------------
+\subsection{Eksperymanty}
+
+

@@ -6,45 +6,47 @@ Database file #1: bibliografia.bib
 Warning--empty publisher in David_1958
 Warning--empty publisher in David_1959
 Warning--empty publisher in neuron_bio
-You've used 6 entries,
+Warning--empty publisher in nn_jozef
+Warning--empty year in nn_jozef
+You've used 7 entries,
             2118 wiz_defined-function locations,
-            526 strings with 4681 characters,
-and the built_in function-call counts, 1454 in all, are:
-= -- 122
-> -- 65
+            529 strings with 4790 characters,
+and the built_in function-call counts, 1666 in all, are:
+= -- 138
+> -- 72
 < -- 0
-+ -- 27
-- -- 20
-* -- 73
-:= -- 258
-add.period$ -- 18
-call.type$ -- 6
-change.case$ -- 22
++ -- 30
+- -- 22
+* -- 86
+:= -- 293
+add.period$ -- 20
+call.type$ -- 7
+change.case$ -- 25
 chr.to.int$ -- 0
-cite$ -- 9
-duplicate$ -- 72
-empty$ -- 133
-format.name$ -- 20
-if$ -- 300
+cite$ -- 12
+duplicate$ -- 84
+empty$ -- 155
+format.name$ -- 22
+if$ -- 343
 int.to.chr$ -- 0
-int.to.str$ -- 6
-missing$ -- 12
-newline$ -- 33
-num.names$ -- 12
-pop$ -- 55
+int.to.str$ -- 7
+missing$ -- 14
+newline$ -- 37
+num.names$ -- 14
+pop$ -- 66
 preamble$ -- 1
-purify$ -- 22
+purify$ -- 25
 quote$ -- 0
-skip$ -- 38
+skip$ -- 43
 stack$ -- 0
-substring$ -- 31
-swap$ -- 6
+substring$ -- 36
+swap$ -- 7
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 12
-warning$ -- 3
-while$ -- 12
-width$ -- 7
-write$ -- 59
-(There were 3 warnings)
+type$ -- 14
+warning$ -- 5
+while$ -- 14
+width$ -- 8
+write$ -- 66
+(There were 5 warnings)
