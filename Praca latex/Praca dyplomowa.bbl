@@ -31,6 +31,10 @@ Anna~Lorenc i~Jarek~BrykDelta.
 Dariusz~Uciński Józef~Korbicz, Andrzej~Obuchowicz.
 \newblock {\em Sztuczne Sieci Neuronowe. Podstawy i zastosowania}.
 
+\bibitem{jak_dziawaja_cnn}
+Mirosław Mamczur.
+\newblock Jak działają konwolucyjne sieci neuronowe (cnn), 2021.
+
 \bibitem{mcculloch1943logical}
 W.S. Mcculloch and W.~Pitts.
 \newblock {\em A Logical Calculus of the Ideas Immanent in Nervous Activity}.

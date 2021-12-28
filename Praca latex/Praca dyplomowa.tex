@@ -443,16 +443,62 @@ Podobnie jak w przypadku warstw splotowych, każdy neuron stanowiący część w
 	\label{max_pooling}
 \end{figure}
 
-\bibliography{bibliografia}
-	
-\end{document}
 
+%-----------------------------------------------------------------------------------
+\subsection{Warstwa porzucenia (Dropout)}
+Najpopularniejszym sposobem do walki z przetrenowaniem w przypadku sieci neuronowych (w tym także konwolucyjne sieci neuronowe) jest porzucanie. Dropout polega na losowym ustawieniu wychodzących krawędzi ukrytych jednostek (neuronów tworzących ukryte warstwy) na 0 przy każdej aktualizacji fazy treningu. Metoda ta jest bardzo efektywna, ponieważ co każde przejście losowo wyłączane są połączenia. Dzięki temu sieć neuronowa nie nauczy się „na pamięć” zbyt szybko, ponieważ architektura co przeliczenie odrobinę się zmienia poprzez zerowanie losowych połączeń neuronów. \cite{jak_dziawaja_cnn}
+
+Po trenowaniu sieci, dropout jest usuwany. Czyli sieć działa normalnie, bez wyłączania połączeń.
+
+
+%-----------------------------------------------------------------------------------
+\subsection{Warstwa spłaszczająca (Flatten)}
+Jest to ważny krok. Ta warstwa przekształca naszą wielowymiarową warstwę w sieci w jednowymiarowy wektor. Robimy to po to, aby dopasować dane wejściowe w pełni połączonej warstwy do klasyfikacji. Na przykład tensor o wielkości (10, 10, 3) zostałby przekształcony w wektor o rozmiarze 300 (1, 300). \cite{jak_dziawaja_cnn}
 
 %===================================================================================
 \section{Implementacja}
+Dla klasyfikacji chorób płuc a głownie COVID-19 zdecydowałem na wykorzystanie splotowej sieci z następnym przejściem w zwykłą sieć jednokierunkową, całkowicie powiązaną. Co w teorii w warstwach splotowych daje możliwość sieci najpierw zauważyć różne kształty, cechy a następnie za pomocą zwykłej sieci neuronowej poprawnie zaklasyfikować chorobę.
 
 %-----------------------------------------------------------------------------------
 \subsection{Ostateczna struktura sieci}
+Po kilku próbach i eksperymentach ostateczną strukturą sieci jest pięć warstw splotowych które są rozmieszczone na przemian z warstwami łączącymi, na końcu są trzy warstwy zwykłych. Wszystkie warstwy oprócz ostatniej mają funkcje aktywacji ReLU, ostatnia warstwa korzysta z Softmax.\\
+
+A dokładniej:
+\begin{itemize}
+	\item Warstwa wejściowa z wymiarami (299,299,1)
+	
+	\item Warstwa splotowa. 32 filtry o rozmiarach (5,5)
+	\item Warstwa łącząca o rozmiarze (2,2)
+	\item Dropout 25\%
+	
+	\item Warstwa splotowa. 32 filtry o rozmiarach (3,3)
+	\item Warstwa łącząca o rozmiarze (2,2)
+	\item Dropout 25\%
+	
+	\item Warstwa splotowa. 64 filtry o rozmiarach (3,3)
+	\item Warstwa łącząca o rozmiarze (2,2)
+	\item Dropout 25\%
+	
+	\item Warstwa splotowa. 64 filtry o rozmiarach (3,3)
+	\item Warstwa łącząca o rozmiarze (2,2)
+	\item Dropout 25\%
+	
+	\item Warstwa splotowa. 128 filtry o rozmiarach (3,3)
+	\item Warstwa łącząca o rozmiarze (2,2)
+	\item Dropout 25\%
+	
+	\item Warstwa spłaszczająca
+	\item Dropout 25\%
+	
+	\item W pełni powiązana warstwa zawierająca 512 neuronów
+	\item Dropout 50\%
+	
+	\item W pełni powiązana warstwa zawierająca 128 neuronów
+	\item Dropout 50\%
+	
+	\item Warstwa wyjściowa zawierająca 4 neurony
+\end{itemize}
+
 
 %-----------------------------------------------------------------------------------
 \subsection{Historia uczenia}
@@ -464,6 +510,10 @@ Podobnie jak w przypadku warstw splotowych, każdy neuron stanowiący część w
 \subsection{Statystyki używania filtrów splotowych}
 
 %-----------------------------------------------------------------------------------
-\subsection{Eksperymanty}
+\subsection{Eksperymenty}
 
 
+
+\bibliography{bibliografia}
+	
+\end{document}
