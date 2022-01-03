@@ -105,7 +105,7 @@ Kluczowe zmiany:
 	\item Używanie funkcji skokowej na końcu
 	\item Dodatkowe obciążeniowe wejście(zawsze wysyła wartość 1) z własną wagą, tak zwany bias
 \end{itemize}
-Jednostka wylicza ważoną sumę sygnałów wejściowych, a następnie zostaję użyta funkcja aktywacji. Najczęściej zostaje użyta funkcja skokowa Heaviside`a (Rysunek \ref{Heaviside}) lub signum (Rysunek \ref{Signum}) .Przy użyciu skokowej funkcji aktywacji taki neuron można nazywać progową jednostką logiczną lub liniową jednostką progową (ang. \textit{Linear Treshod Unit} -- LTU). Dziawanie tej jednoki można matematycznie opisać w następujący sposób.\newline\newline
+Jednostka wylicza ważoną sumę sygnałów wejściowych, a następnie zostaję użyta funkcja aktywacji. Najczęściej zostaje użyta funkcja skokowa Heaviside`a (Rysunek \ref{Heaviside}) lub signum (Rysunek \ref{Signum}) .Przy użyciu skokowej funkcji aktywacji taki neuron można nazywać progową jednostką logiczną lub liniową jednostką progową (ang. \textit{Linear Treshod Unit} -- LTU). Działanie tej jednostki można matematycznie opisać w następujący sposób.\newline\newline
 $ y = \mathcal{H}(W^{T}X + b) $\newline \newline
 Gdzie: \newline
 X -- wektor wejść. \newline
@@ -392,7 +392,7 @@ Jeśli wszystkie neurony w danej warstwie będą korzystać z tego samego filtra
 wzorce. \cite{geron}
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.6\textwidth,keepaspectratio=true]{filters}
+	\includegraphics[width=0.8\textwidth,keepaspectratio=true]{filters}
 	\caption{}
 	\label{filters}
 \end{figure}
@@ -438,7 +438,7 @@ Podobnie jak w przypadku warstw splotowych, każdy neuron stanowiący część w
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.6\textwidth,keepaspectratio=true]{max_pooling}
+	\includegraphics[width=0.8\textwidth,keepaspectratio=true]{max_pooling}
 	\caption{}
 	\label{max_pooling}
 \end{figure}
@@ -502,13 +502,115 @@ A dokładniej:
 
 %-----------------------------------------------------------------------------------
 \subsection{Historia uczenia}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\textwidth,keepaspectratio=true]{accuracy}
+	\caption{}
+	\label{accuracy}
+\end{figure}
 
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\textwidth,keepaspectratio=true]{loss}
+	\caption{}
+	\label{loss}
+\end{figure}
+
+Patrząc na wykres historii możemy zobaczyć że przetrenowania wielkiego niema. na końcu rezultat dla danych treningowych jest troszeczkę lepszy co jest całkiem normalną sytuacją. Trochę mnie zdziwiło że na samym początku dane testowe dają lepszy rezultat, to może nam mówić o tym że mamy nie zbyt dobre dane. Najlepszy rezultat był osiągnięty w 24 powtórzeniu. Żeby nie stracić właściwie wytrenowane wagi, po każdej iteracji był robiony backup wag które dają najlepszy rezultat. 
 %-----------------------------------------------------------------------------------
 \subsection{Stosy map cech}
+
+Żeby lepiej zrozumieć co się dzieje w środku sieci napisałem skrypt który wyświetla mapy cech dla każdej warstwy splotowej.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\textwidth,keepaspectratio=true]{normal_prediction}
+	\caption{Predykcja losowego zdjęcia zdrowych płuc ze zbioru testowego.}
+	\label{normal_pediction}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=1\textwidth,keepaspectratio=true]{normal_filters_dark}
+\caption{Mapy cech generowane pod czas predykcji obrazu na poprzednim rysunku}
+\label{normal_filters_dark}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=1\textwidth,keepaspectratio=true]{normal_filters_light}
+\caption{Bardziej jasne mapy cech generowane pod czas predykcji obrazu na rysunku przed poprzednim}
+\label{normal_filters_light}
+\end{figure}
+
+Na rysunkach \ref{normal_filters_dark} i \ref{normal_filters_light} są wyświetlone mapy cech generowane przy predykcji choroby płuc na zdjęciu na rysunku \ref{normal_pediction}. Nad każdym obrazkiem są trzy liczby: numer filtry w danej warstwie, maksymalna wartość piksela i procent nie czarnych pikseli na danym obrazku. Są wyświetlone nie wszystkie mapy, dla tego że większość filtrów dają całkowicie czarny obrazek. Różne filtry reagują na różne kształty, dla innych zdjęć są aktywne inne filtry splotowe.
+
+Rysunki \ref{normal_filters_dark} i \ref{normal_filters_light} są identyczne z jedną różnicą, na rysunku \ref{normal_filters_light} obrazki są bardziej jasne, żeby było lepiej widać cechę. Natomiast mapy cech na rysunku \ref{normal_filters_dark} pokazują realną jasność (siłę).
+
+Na rysunku \ref{normal_filters_dark} bardzo dobrze widać że w ostatniej warstwie na obrazku 84 jest najjaśniejszy punkt w prawym górnym kącie. Akurat na zdjęciu w tym miejscu jest odzwierciedlona literka L. Co w teorii mówi nam że ta literka ma wielki wpływ na predykcje choroby. Co w rzeczywistości może być nie tak, dla tego że predykcja jest robiona w następnych warstwach sieci które niestety nie da się tak łatwo wyświetlić i zrozumieć. Natomiast zwiększa to szans że sieć jest wytrenowana źle.  
+
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\textwidth,keepaspectratio=true]{covid_prediction}
+	\caption{Predykcja losowego zdjęcia zdrowych płuc ze zbioru testowego.}
+	\label{covid_pediction}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\textwidth,keepaspectratio=true]{covid_filters_dark}
+	\caption{Mapy cech generowane pod czas predykcji obrazu na poprzednim rysunku}
+	\label{covid_filters_dark}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\textwidth,keepaspectratio=true]{covid_filters_light}
+	\caption{Bardziej jasne mapy cech generowane pod czas predykcji obrazu na rysunku przed poprzednim}
+	\label{covid_filters_light}
+\end{figure}
+
+
+Na rysunku \ref{covid_pediction} jest pokazana predykcja choroby na zdjęciu bez żadnych literek. Na rysunkach \ref{covid_filters_dark} \ref{covid_filters_light} widać że są aktywne zupełnie inne filtry oraz ilość aktywnych filtrów też jest mniejsza. Na tym przykładzie bardzo dobrze zostały wyróżnione same płuca i różne utwory wewnątrz. Nawet można uwierzyć że sieć coś widzi w płucach i predykcja została zrobiona jakichś utworów wewnątrz. 
 
 %-----------------------------------------------------------------------------------
 \subsection{Statystyki używania filtrów splotowych}
 
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\textwidth,keepaspectratio=true]{statystyka_warstwy_1}
+	\caption{}
+	\label{statystyka_warstwy_1}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\textwidth,keepaspectratio=true]{statystyka_warstwy_2}
+	\caption{}
+	\label{statystyka_warstwy_2}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\textwidth,keepaspectratio=true]{statystyka_warstwy_3}
+	\caption{}
+	\label{statystyka_warstwy_3}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\textwidth,keepaspectratio=true]{statystyka_warstwy_4}
+	\caption{}
+	\label{statystyka_warstwy_4}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\textwidth,keepaspectratio=true]{statystyka_warstwy_5}
+	\caption{}
+	\label{statystyka_warstwy_5}
+\end{figure}
 %-----------------------------------------------------------------------------------
 \subsection{Eksperymenty}
 
