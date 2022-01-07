@@ -57,7 +57,27 @@
 
 
 %===================================================================================
-\section{Choroby płuc, rozpoznawanie, skutki}
+\section{Choroby płuc}
+
+%-----------------------------------------------------------------------------------
+\subsection{Lung opacity}
+%PLAGIAT https://natemat.pl/zdrowie/339549,efekt-mlecznej-szyby-w-plucach-skutki-covid-19-co-to-znaczy-i-jak-leczyc
+efekt mlecznej szyby (matowej szyby). – Płuca mają pęcherzyki przypominające winogrona, a cała reszta to jest śródmiąższ. Dochodzi do zwłóknienia miejsca, które normalnie powinno być tkanką elastyczną. Włóknieje otoczenie tych pęcherzyków, czyli łodyżki winogron. Wtedy spada wydolność płuc, co widać po danych spirometrycznych. One są istotne w procesie wymiany tlenowej – wskazuje mój rozmówca.
+Niestety, w takim przypadku mówimy już o poważnych dolegliwościach. Dochodzi do duszności, tachykardii czy uszkodzeń serca, które działa na zwiększonych obrotach.
+
+
+%-----------------------------------------------------------------------------------
+\subsection{Viral pneumonia}
+Wirusowe zapalenie płuc występuje najczęściej jako powikłanie przedłużającego się zakażenia grypowego lub grypopodobnego. Jego cechą charakterystyczną jest szerzenie się procesu zapalnego w tkance śródmiąższowej, a w mniejszym stopniu w świetle pęcherzyków płucnych. Stąd też stwierdzane zjawiska osłuchowe podczas badania płuc w tym typie zapalenia są znacznie słabiej wyrażone niż zmiany obserwowane w badaniu radiologicznym.
+
+Wirusowe zapalenie płuc to schorzenie, które pojawia się zwykle jako powikłanie grypy, częściej dotyka dzieci niż osoby dorosłe. Zapalenie mogą wywoływać wirusy grypy, RVS lub adenowirusy. Charakterystyczną cechą wirusowego zapalenia płuc jest rozprzestrzenianie się procesu zapalnego w tkance śródmiąższowej, a mniej w świetle pęcherzyków płucnych. Choroba atakuje najczęściej w okresie jesienno-zimowym, gdy mamy do czynienia z epidemią grypy.
+
+%-----------------------------------------------------------------------------------
+\subsection{COVID-19}
+%PLAGIAT https://pl.wikipedia.org/wiki/COVID-19
+COVID-19 (od ang. coronavirus disease 2019)[6] – ostra choroba zakaźna układu oddechowego wywołana zakażeniem wirusem SARS-CoV-2[7][8][9]. Została po raz pierwszy rozpoznana i opisana w listopadzie 2019, w środkowych Chinach (miasto Wuhan, w prowincji Hubei) podczas serii zachorowań zapoczątkowujących pandemię tej choroby[10][11][12][13].
+
+Standardową metodą diagnozowania zakażenia jest test łańcuchowej reakcji polimerazy w czasie rzeczywistym z odwrotną transkryptazą (RT-qPCR, real-time RT-PCR) wykonany z wymazu nosowo-gardłowego lub próbki plwociny, który dostarcza wyniki w czasie od kilku godzin do dwóch dni. Analiza przeciwciał z próbki surowicy krwi również może być wykorzystana jako metoda diagnostyczna, pozwalająca na otrzymanie wyniku w ciągu kilku dni[14]. Choroba może także zostać zdiagnozowana na podstawie oceny kombinacji objawów, czynników ryzyka oraz wyniku badania tomografii komputerowej klatki piersiowej, wykazującego cechy zapalenia płuc[15][16].
 
 %===================================================================================
 \section{Uczenie maszynowe}
@@ -70,6 +90,7 @@ Ta praca jest zrobiona z użyciem uczenia maszynowego a zwłaszcza sieci neurono
 Zanim opiszę sieci neuronowe, chcę przedstawić co to jest neuron (komórka).
 
 \subsection{Neuron biologiczny}
+%??PLAGIAT?? Różne żródła
 Jak wiadomo mózg ludzki i większości innych organizmów składa się z malutkich komórek nerwowych, nazywanych neuron, zdolnych do przetwarzania i przewodzenia informacji w postaci sygnału elektrycznego. Neurony są podstawowym elementem układu nerwowego zwierząt. Najwięcej neuronów znajduje się w ośrodkowym układzie nerwowym, w skład którego wchodzi mózgowie oraz rdzeń kręgowy. \cite{neuroscience}
 Głównymi elementami neuronu są ciało komórki zawierające jądro i większość organelli komórkowych, wiele rozgałęziających się wypustek zwanych dendrytami oraz jedna bardzo długa wypustka -- akson. \cite{geron}
 
@@ -93,7 +114,7 @@ W 1943 przez Warren S. McCulloch i Walter Pitts było zaproponowano bardzo prost
 	\centering
 	\includegraphics[width=\textwidth,keepaspectratio=true]{SSN_simple_neurons}
 	\caption{
-		Przykład sztucznych sieci neuronowych przeprowadzających proste operacje logiczne. Neuron aktywuje się przy co najmniej dwóch aktywnych wejściach \cite{geron}
+		Przykład sztucznych sieci neuronowych przeprowadzających proste operacje logiczne. Neuron aktywuje się przy co najmniej dwóch aktywnych wejściach
 	}
 \end{figure}
 
@@ -173,7 +194,6 @@ Signum, sgn (łac. signum „znak”) – funkcja zmiennej rzeczywistej, zdefini
 \subsection{Sigmoid}
 Funkcja sigmoidalna jest funkcją matematyczną mającą charakterystyczną krzywą w kształcie litery „S” lub krzywą sigmoidalną.
 Typowym przykładem funkcji sigmoidalnej jest funkcja logistyczna pokazana na rysunku \ref{Sigmoid} i zdefiniowana wzorem: 
-
 
 
 \begin{figure}[H]
@@ -257,7 +277,7 @@ Sieć neuronowa to połączenie neuronów w jakiś sposób. Najbardziej popularn
 	\label{feed_forward_network}
 \end{figure}
 
-Na rysunku \ref{feed_forward_network} jest pokazana sieć neuronowa skłądająca się z trzech warstw: jednej warstwy wejściowej, jednej wyjściowej i jednej ukrytej. Ukryta i wyjsciowa warstwy są podzielone na dwie fazy: nieliniową $X \rightarrow t_1; h_1 \rightarrow t_2$ i liniową $t_1 \rightarrow h_1; t_2 \rightarrow z$.
+Na rysunku \ref{feed_forward_network} jest pokazana sieć neuronowa składająca się z trzech warstw: jednej warstwy wejściowej, jednej wyjściowej i jednej ukrytej. Ukryta i wyjściowa warstwy są podzielone na dwie fazy: nieliniową $X \rightarrow t_1; h_1 \rightarrow t_2$ i liniową $t_1 \rightarrow h_1; t_2 \rightarrow z$.
 
 \begin{flushleft}
 	$X$ -- wektor wejść (pierwszej warstwy) \newline
@@ -278,9 +298,10 @@ Na rysunku \ref{feed_forward_network} jest pokazana sieć neuronowa skłądając
 	\label{feed_forward_graph}
 \end{figure}
 
-\begin{flushleft}
+
 Obliczamy wszystko po kolei. Jest sprawą dość prostą. Dla obliczenia wektora wyjścia z każdej warstwy sieci potrzebujemy mieć matrycy wag i wektory biasów. Najcięższej one są inicjalizowane losowo
 
+\begin{flushleft}
 $t_1 = XW_1 + b_1;$\newline
 $h_1 = F(t_1);$\newline
 $t_2 = h_1W_2 + b_2;$\newline
@@ -297,6 +318,7 @@ Dla pierwszego etapu w swojej prace używam algorytmu propagacji wstecznej (ang.
 
 %===================================================================================
 \section{Propagacja wsteczna}
+%PLAGIAT
 Algorytm propagacji wstecznej stanowi dzisiaj podstawowy algorytm uczenia nadzorowanego wielowarstwowych jednokierunkowych sieci neuronowych. Podaje on przepis na zmianę wag w dowolnych połączeń elementów przetwarzających rozmieszczonych w sąsiednich warstwach sieci jednokierunkowej. Jest to algorytm oparty na minimalizacji sumy kwadratów błędów uczenia. Dzięki zastosowaniu specyficznego sposobu propagowania błędów uczenia sieci powstałych na jej wyjściu, tzn. przesyłania ich od warstwy wyjściowej do wejściowej, algorytm propagacji wstecznej stał się jednym z najskuteczniejszych algorytmów uczenia sieci. \cite{nn_jozef}
 
 %-----------------------------------------------------------------------------------
@@ -344,6 +366,7 @@ Splotowe sieci, wymyśłone w latach 80 ubiegłego wieku, mogą ulepszyć sytuac
 
 %-----------------------------------------------------------------------------------
 \subsection{Struktura kory wzrokowej}
+%PLAGIAT
 David H. Hubel i Torsten Wiesel przeprowadzili szereg eksperymentów na kotach w latach 1958 \cite{David_1958} i 1959 \cite{David_1959}, dzięki którym poznaliśmy strukturę kory wzrokowej. Udowodnili oni w szczególności, że wiele neuronów składających się na korę wzrokową wyznacza lokalne pola recepcyjne, tzn. że reagują jedynie na bodźce wzrokowe mieszczące się w określonym rejonie pola wzrokowego (Rysunek \ref{kora_wzrokowa}). Pola recepcyjne poszczególnych neuronów mogą się na siebie nakładać i łącznie tworzą cale pole wzrokowe \cite{geron}
 
 Do tego badacze pokazali także, że pewne neurony reagują wyłącznie na obrazy składające się z linii poziomych, a inne są pobudzane przez linie ułożone w inny sposób (dwa neurony mogą mieć to samo pole recepcyjne, ale reagować na inne ułożenie linii). Zauważono także, że niektóre komórki nerwowe mają większe pola recepcyjne i wykrywają bardziej skomplikowane kształty, stanowiące połączenie bardziej ogólnych wzorów. Poczynione obserwacje doprowadziły badaczy do wniosku, że neurony odpowiedzialne za rozpoznawanie bardziej skomplikowanych kształtów znajdują się na wyjściu sąsiadujących neuronów reagujących na prostsze bodźce wzrokowe (na rysunku \ref{kora_wzrokowa} każdy neuron jest połączony tylko z kilkoma neuronami z niższej warstwy). Taka archi tektura pozwala wykrywać wszelkie rodzaje skomplikowanych kształtów w obszarze pola wzrokowego. \cite{geron}
@@ -357,6 +380,7 @@ Do tego badacze pokazali także, że pewne neurony reagują wyłącznie na obraz
 
 %-----------------------------------------------------------------------------------
 \subsection{Warstwy splotowe}
+%PLAGIAT
 Najistotniejszym składnikiem sieci CNN jest warstwa splotowa (konwolucyjna): neurony w pierwszej warstwie splotowej nie są połączone z każdym pikselem obrazu wejściowego, lecz wyłącznie z pikselami znajdującymi się w ich polu recepcyjnym (rysunek \ref{warstwa_splotowa}). Z kolei każdy neuron w drugiej warstwie splotowej łączy się wyłącznie z neuronami znajdującymi się w niewielkim obszarze pierwszej warstwy. Dzięki temu sieć może koncentrować się na ogólnych cechach w pierwszej warstwie ukrytej, następnie łączyć je w bardziej złożone kształty w drugiej warstwie ukrytej itd. Taka hierarchiczna struktura jest powszechnie spotykana na zdjęciach, co stanowi jedną z przyczyn tak dużej skuteczności sieci CNN w rozpoznawaniu obrazów. \cite{geron}
 
 Do tej pory wszystkie analizowane przez nas wielowarstwowe sieci neuronowe miały warstwy składające się z długich rzędów neuronów, a przed przekazaniem obrazu do sieci musieliśmy go przekształcić do postaci jednowymiarowej. Od teraz każda warstwa będzie dwuwymiarowa, co ułatwi nam obserwowanie związków pomiędzy neuronami a ich danymi wejściowymi. \cite{geron}
@@ -376,7 +400,9 @@ Neuron znajdujący się w wierszu $i$ oraz kolumnie $j$ danej warstwy jest poł�
 	\label{padding}
 \end{figure}
 
+%-----------------------------------------------------------------------------------
 \subsection{Krok}
+%PLAGIAT
 Możliwe jest również łączenie bardzo dużej warstwy wejściowej ze znacznie mniejszą kolejną warstwą poprzez rozdzielanie pól recepcyjnych, tak jak zaprezentowano na rysunku \ref{step}. Rozwiązanie to zmniejsza drastycznie złożoność obliczeniową modelu. Odległość pomiędzy dwoma kolejnymi polami recepcyjnymi nosi nazwę kroku (ang. \textit{stride}). Na widocznym schemacie warstwa wejściowa o wymiarach 5x7 (plus uzupełnianie zerami) łączy się z warstwą o rozmiarze $3 \times 4$ za pomocą pól recepcyjnych będących kwadratami $3 \times 3$ i kroku o wartości 2 (w omawianym przykładzie krok jest taki sam w obydwu wymiarach, ale nie jest to wcale regułą). Neuron zlokalizowany w rzędzie $i$ oraz kolumnie $j$ górnej warstwy łączy się z wyjściami neuronów dolnej warstwy mieszczącymi się w rzędach od $i\times s_{h}$, do $i \times s_{h}+f_{h}-1$ iw kolumnach od $j \times s_{w}$, do $j \times s_{w}+f_{w}-1$. gdzie $s_{h}$ i $s_{w}$, definiują wartości kroków odpowiednio w kolumnach i rzędach. \cite{geron}
 \begin{figure}[H]
 	\centering
@@ -384,8 +410,11 @@ Możliwe jest również łączenie bardzo dużej warstwy wejściowej ze znacznie
 	\caption{}
 	\label{step}
 \end{figure}
+
+
 %-----------------------------------------------------------------------------------
 \subsection{Filtry}
+%PLAGIAT
 Wagi neuronu mogą być przedstawiane jako niewielki obraz o rozmiarze pola recepcyjnego. Na przykład na rysunku \ref{filters} widzimy dwa możliwe zbiory wag, tak zwane filtry (lub jądra splotowe, ang. \textit{convolution kernels}). Pierwszy filtr jest symbolizowany jako czarny kwadrat z białą pionową linią przechodzącą przez jego środek (jest to macierz o wymiarach $7 \times 7$ wypełniona zerami oprócz środkowej kolumny, która zawiera jedynki); neurony zawierające te wagi będą ignorować wszystkie elementy w polu recepcyjnym oprócz znajdujących się w środkowej pionowej linii (dane wejściowe znajdujące się poza tą linią będą przemnażane przez O). Drugi filtr wygląda podobnie; różnica polega na tym, że środkowa linia jest ułożona poziomo. Także w tym wypadku będą brane pod uwagę jedynie dane wejściowe znajdujące się w tej linii. \cite{geron}
 
 Jeśli wszystkie neurony w danej warstwie będą korzystać z tego samego filtra pionowego" (i takiego samego członu obciążenia), a my wczytamy do sieci obraz zaprezentowany na dole rysunku \ref{filters},to uzyskamy obraz widoczny w lewym górnym rogu rysunku. Po zastosowaniu tego filtru pionowe białe linie stają się wyraźniej widoczne, natomiast pozostała część obrazu zostaje rozmazana. Na zasadzie analogii otrzymujemy obraz widoczny w prawym górnym rogu rysunku po zastosowaniu filtru poziomego"; teraz z kolei białe poziome linie zostają wyostrzone, a reszta obrazu ulega ramazanu. Zatem warstwa wypełniona neuronami wykorzystującymi ten sam filtr daje nam mapę cech (ang. \textit{feature map}), dzięki której możemy dostrzec elementy najbardziej przypominające dany filtr. Nie musisz oczywiście definiować filtrów własnoręcznie - sieć CNN w czasie uczenia wyszukuje filtry najbardziej przydatne do danego zadania i uczy się łączyć je w bardziej złożone
@@ -399,6 +428,7 @@ wzorce. \cite{geron}
 
 %-----------------------------------------------------------------------------------
 \subsection{Stosy map cech}
+%PLAGIAT
 Do tej pory dla uproszczenia przedstawialiśmy każdą warstwę splotową w postaci cienkiej, dwuwymiarowej warstwy, ale w rzeczywistości składa się ona z kilku map cech o identycznych rozmiarach, dlatego trójwymiarowe odwzorowanie jest bliższe rzeczywistości (rysunek \ref{stosy_map_cech}). W zakresie jednej mapy cech każdy neuron jest przydzielony do jednego piksela, a wszystkie tworzące ją neurony współdzielą te same parametry (wagi i człon obciążenia). Neurony w innych mapach cech mają odmienne wartości parametrów. Pole recepcyjne neuronu nie ulega zmianie, ale przebiega przez wszystkie mapy cech poprzednich warstw. Krótko mówiąc, warstwa splotowa równocześnie stosuje różne filtry na wejściach, dzięki czemu jest w stanie wykrywać wiele cech w dowolnym obszarze obrazu \cite{geron}
 
 Dzięki temu, że wszystkie neurony w mapie cech stosują te same parametry, znacznie zmniejsza się ich liczba w modelu, jednak co ważniejsze, oznacza to, że gdy sieć CNN nauczy się rozpoznawać wzorzec w jednym miejscu, będzie w stanie to robić również w innych lokacjach. Dla porównania, sieć GSN po nauczeniu się rozpoznawania wzorca w jednym miejscu nie potrafi tego przełożyć na inne obszary. \cite{geron}
@@ -432,6 +462,7 @@ Powyższy opis został podsumowany w równaniu \ref{conv_formula} widoczny duży
 
 %-----------------------------------------------------------------------------------
 \subsection{Warstwa łącząca (Max pooling)}
+%PLAGIAT
 Gdy już wiemy, jak działa warstwa splotowa, zrozumienie mechanizmu kryjącego się za warstwami łączącymi (ang. \textit{pooling layers}) nie powinno stanowić problemu. Ich celem jest pod próbkowanie (ang. \textit{subsample}) obrazu wejściowego w celu zredukowania obciążenia obliczeniowego. wykorzystania pamięci i liczby parametrów (a tym samym ograniczenia ryzyka przetrenowania). \cite{geron}
 
 Podobnie jak w przypadku warstw splotowych, każdy neuron stanowiący część warstwy łączącej łączy się z wyjściami określonej liczby neuronów warstwy poprzedniej, mieszczącej się w obszarze niewielkiego, prostokątnego pola recepcyjnego. Podobnie jak wcześniej, musimy tu rozmiar tego pola, wartość kroku, rodzaj uzupełniania zerami itd. Jednakże warstwa licząca nie zawiera żadnych wag; jej jedynym zadaniem jest gromadzenie danych wejściowych za pomocą jakiejś funkcji agregacyjnej, np. maksymalizującej lub uśredniającej. Na rysunku \ref{max_pooling} widzimy najpopularniejszy rodzaj - maksymalizującą warstwę łączącą (ang. \textit{max pooling layer}). W tym przykładzie korzystamy z jądra łączącego (ang. \textit{pooling kernel}) o rozmiarze $2 \times 2$, kroku o wartości 2 iz pominięciem uzupełniania zerami. Jedynie maksymalna wartość z każdego jądra zostaje przekazana do następnej warstwy natomiast pozostałe wartości wejściowe zostają odrzucone. Na przykład w lewym dolnym polu recepcyjnym na rysunku \ref{max_pooling} widzimy wartości wejściowe 1, 5, 3, 2, zatem tylko wartość maksymalna (5) zostanie przekazana do następnej warstwy. Z powodu kroku równego 2 obraz wyjściowy ma szerokość i wysokość o połowę mniejsze w porównaniu do obrazu wejściowego (zaokrąglamy tu w dól. ponieważ nie korzystamy z uzupełniania zerami). \cite{geron}
@@ -446,6 +477,7 @@ Podobnie jak w przypadku warstw splotowych, każdy neuron stanowiący część w
 
 %-----------------------------------------------------------------------------------
 \subsection{Warstwa porzucenia (Dropout)}
+%PLAGIAT
 Najpopularniejszym sposobem do walki z przetrenowaniem w przypadku sieci neuronowych (w tym także konwolucyjne sieci neuronowe) jest porzucanie. Dropout polega na losowym ustawieniu wychodzących krawędzi ukrytych jednostek (neuronów tworzących ukryte warstwy) na 0 przy każdej aktualizacji fazy treningu. Metoda ta jest bardzo efektywna, ponieważ co każde przejście losowo wyłączane są połączenia. Dzięki temu sieć neuronowa nie nauczy się „na pamięć” zbyt szybko, ponieważ architektura co przeliczenie odrobinę się zmienia poprzez zerowanie losowych połączeń neuronów. \cite{jak_dziawaja_cnn}
 
 Po trenowaniu sieci, dropout jest usuwany. Czyli sieć działa normalnie, bez wyłączania połączeń.
@@ -453,6 +485,7 @@ Po trenowaniu sieci, dropout jest usuwany. Czyli sieć działa normalnie, bez wy
 
 %-----------------------------------------------------------------------------------
 \subsection{Warstwa spłaszczająca (Flatten)}
+%PLAGIAT
 Jest to ważny krok. Ta warstwa przekształca naszą wielowymiarową warstwę w sieci w jednowymiarowy wektor. Robimy to po to, aby dopasować dane wejściowe w pełni połączonej warstwy do klasyfikacji. Na przykład tensor o wielkości (10, 10, 3) zostałby przekształcony w wektor o rozmiarze 300 (1, 300). \cite{jak_dziawaja_cnn}
 
 %===================================================================================
@@ -461,7 +494,7 @@ Dla klasyfikacji chorób płuc a głownie COVID-19 zdecydowałem na wykorzystani
 
 %-----------------------------------------------------------------------------------
 \subsection{Ostateczna struktura sieci}
-Po kilku próbach i eksperymentach ostateczną strukturą sieci jest pięć warstw splotowych które są rozmieszczone na przemian z warstwami łączącymi, na końcu są trzy warstwy zwykłych. Wszystkie warstwy oprócz ostatniej mają funkcje aktywacji ReLU, ostatnia warstwa korzysta z Softmax.\\
+Po kilku próbach i eksperymentach ostateczną strukturą sieci jest pięć warstw splotowych które są rozmieszczone na przemian z warstwami łączącymi, na końcu są trzy warstwy zwykłych. Wszystkie warstwy oprócz ostatniej mają funkcje aktywacji ReLU, ostatnia warstwa korzysta z Softmax. Sieć zawiera 16,983,268 parametrów.\\
 
 A dokładniej:
 \begin{itemize}
@@ -576,45 +609,160 @@ Na rysunku \ref{covid_pediction} jest pokazana predykcja choroby na zdjęciu bez
 
 %-----------------------------------------------------------------------------------
 \subsection{Statystyki używania filtrów splotowych}
+Zobaczyłem że dużo filtrów dają czarny obrazek i chciałem sprawdzisz czy na pewno wszystkie filtry reagują na jakieś kształty. Napisałem skrypt który przeprowadził 1000 losowych obrazków ze zbioru testowego przez sieć i policzył średnie wartości otrzymanych map cech. Okazało się że nie wszystkie filtry działają poprawnie. Najprawdopodobniej jest to problem nazywany śmiercią ReLU. W czasie uczenia niektóre neurony trwale "giną", co znaczy, że jedynym przesyłanym sygnałem jest 0. Jeżeli zdarzy się taka sytuacja kiedy wagi neurony zostaną zaktualizowane tak że suma ważona sygnałów wejściowych dla tego neuronu przyjmie wartość ujemną, algorytm optymalizacji wag przestanie  na niego  wpływać ponieważ gradient funkcji ReLU wynosi 0 przy wartościach ujemnych. \cite{geron}
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=1\textwidth,keepaspectratio=true]{statystyka_warstwy_1}
-	\caption{}
+	\includegraphics[width=0.8\textwidth,keepaspectratio=true]{statystyka_warstwy_1}
+	\caption{Pierwsza warstwa splotowa. Działa 18 filtry z 32}
 	\label{statystyka_warstwy_1}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=1\textwidth,keepaspectratio=true]{statystyka_warstwy_2}
-	\caption{}
+	\includegraphics[width=0.8\textwidth,keepaspectratio=true]{statystyka_warstwy_2}
+	\caption{Druga warstwa splotowa. Działa 25 filtry z 32}
 	\label{statystyka_warstwy_2}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=1\textwidth,keepaspectratio=true]{statystyka_warstwy_3}
-	\caption{}
+	\includegraphics[width=0.8\textwidth,keepaspectratio=true]{statystyka_warstwy_3}
+	\caption{Trzecia warstwa splotowa. Działa 44 filtry z 64}
 	\label{statystyka_warstwy_3}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=1\textwidth,keepaspectratio=true]{statystyka_warstwy_4}
-	\caption{}
+	\includegraphics[width=0.8\textwidth,keepaspectratio=true]{statystyka_warstwy_4}
+	\caption{Czwarta warstwa splotowa. Działa 43 filtry z 64}
 	\label{statystyka_warstwy_4}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=1\textwidth,keepaspectratio=true]{statystyka_warstwy_5}
-	\caption{}
+	\includegraphics[width=0.8\textwidth,keepaspectratio=true]{statystyka_warstwy_5}
+	\caption{Piąta warstwa splotowa. Działa 81 filtry z 128}
 	\label{statystyka_warstwy_5}
 \end{figure}
+
 %-----------------------------------------------------------------------------------
-\subsection{Eksperymenty}
+\section{Eksperymenty}
+
+%-----------------------------------------------------------------------------------
+\subsection{Różne struktury sieci}
+Pierwszą próbą była sieć zawierająca trzy warstwy splotowe i dwie warstwy "dense". Ta sieć miała w sobie 80,564,612 parametrów. Większą częścią tych parametrów było połączenie ostatniej warstwy splotowej i pierwszej warstwy "dense". To jest bardzo duża liczba parametrów, natomiast średni czas jednej epoki uczenia było 303 sekundy. Ten model osiągną rezultat w val loss: 0.3893 - val accuracy: 0.8630. Co jest całkiem niezły wynik. Na rysunku \ref{history_1} można zobaczyć niewielkie przetrenowanie. 
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.8\textwidth,keepaspectratio=true]{history_1}
+	\caption{Historia uczenia 1 modeli}
+	\label{history_1}
+\end{figure}
+
+Drugi model miał łącznie 4,486,116 parametrów i zawierał 4 warstwy splotowe i trzy "dense". W historii uczenia tego modelu (rysunek \ref{history_2}) widać że coś poszło nie tak. Przez ostatnie cztery epoki nie było ulepszeń i uczenie zostało przerwane.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.8\textwidth,keepaspectratio=true]{history_2}
+	\caption{Historia uczenia 2 modeli}
+	\label{history_2}
+\end{figure}
+
+Trzeci model miał 4 warstwy splotowe i 3 "dense". Liczba parametrów równa się 32,157,444. To nie ulepszyło sytuacje.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.8\textwidth,keepaspectratio=true]{history_3}
+	\caption{Historia uczenia 3 modeli}
+	\label{history_3}
+\end{figure}
+
+Czwarty raz spróbowałem wziąć najpierwszy model, dodać jedną warstwe splotowa  BatchNormalization po każdej warstwie splotowej. W teorii to miało by ulepszyć wynik i zwiększysz szybkość uczenia się. Ale niestety ani jedno ani drugie nie było fajne. Prędkość była około 345 sekund na epokę.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.8\textwidth,keepaspectratio=true]{history_4}
+	\caption{Historia uczenia 4 modeli}
+	\label{history_4}
+\end{figure}
+
+W piątym modelu kluczową zmianą było to że pierwsze dwie warstwy splotowe idą jedna po drugiej bez żadnej warstwy po środku. I do tego jeszcze rozmiary filtrów splotowych były po kolei 64, 64, 32, 32. Czyli odwrotnie, do tej pory robiłem rosnąco. Widać trochę przetrenowanie na końcu ale nie krytycznie. Liczba parametrów -- 20,203,396. Jest to cztery razy mniej od pierwszego modelu a rezultat jest nie gorszy.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.8\textwidth,keepaspectratio=true]{history_5}
+	\caption{Historia uczenia 5 modeli}
+	\label{history_5}
+\end{figure}
+
+W szóstym i ostatnim modelu, w odróżnieniu od piątego, dodałem jedną warstwę splotową i rozmiar filtrów jest ustawiony rosnąco. Dodanie warstwy splotowej zmniejszyło wielkość ostatniej mapy cech, co zmniejsza ilość parametrów. W tym modelu jest to 16,983,268. Plus do tego to zwiększyło prędkość uczenia się, 184 sekundy na epokę. Ten model wyszedł najlepszy względem liczby parametrów i prędkością działania i też daje najlepszy rezultat, wprawie 87\% wiarygodności predykcji chorób w zbiorze testowym.  
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.8\textwidth,keepaspectratio=true]{history_6}
+	\caption{Historia uczenia 6 modeli}
+	\label{history_6}
+\end{figure}
 
 
+%-----------------------------------------------------------------------------------
+\subsection{Sprawdzenie prawidłowości klasyfikacji}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.8\textwidth,keepaspectratio=true]{fixing_image_exp}
+	\caption{}
+	\label{}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.8\textwidth,keepaspectratio=true]{paper_covid_exp}
+	\caption{}
+	\label{}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.8\textwidth,keepaspectratio=true]{paper_l_o_exp}
+	\caption{}
+	\label{}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.8\textwidth,keepaspectratio=true]{paper_v_p_exp}
+	\caption{}
+	\label{}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.8\textwidth,keepaspectratio=true]{normal_L_exp}
+	\caption{}
+	\label{}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.8\textwidth,keepaspectratio=true]{covid_R_exp}
+	\caption{}
+	\label{}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.8\textwidth,keepaspectratio=true]{google_normal_L_exp}
+	\caption{}
+	\label{}
+\end{figure}
+
+
+
+%-----------------------------------------------------------------------------------
+\section{Skutki}
+NIE UDAŁO SIĘ, NIE DZIAŁA WŁAŚCIWIE, ZŁY DATASET! NIESTETY :(
 
 \bibliography{bibliografia}
 	
