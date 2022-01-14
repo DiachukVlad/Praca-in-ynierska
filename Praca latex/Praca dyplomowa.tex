@@ -6,6 +6,9 @@
 \usepackage{polski}
 \usepackage{geometry}
 \usepackage{graphicx}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,cmap}
+\usepackage[none]{hyphenat}
 
 \geometry{
 	a4paper,
@@ -34,7 +37,27 @@
 
 \makeindex
 \begin{document}
-\maketitle
+%\pagenumbering{gobble}
+\begin{titlepage}                                                                                        
+	\includegraphics[width=\textwidth]{pjwstk_logo}
+	\\
+	\\
+	\begin{center}
+		\textbf{Wydział Informatyki}\\
+		
+		\textbf{Nazwa katedry}\\
+		
+		Inteligentne systemy przetwarzania danych\\
+		
+		\textbf{Vladyslav Diachuk}\\
+		
+		s18901\\
+		
+		\textbf{Klasyfikacja COVID-19 na zdjęciach rentgenowskich}\\
+		
+	\end{center}
+	
+\end{titlepage}
 
 %napisać że default obrazki są z książki gerona
 
@@ -60,24 +83,24 @@
 \section{Choroby płuc}
 
 %-----------------------------------------------------------------------------------
-\subsection{Lung opacity}
+\subsection{Efekt mlecznej szyby}
 %PLAGIAT https://natemat.pl/zdrowie/339549,efekt-mlecznej-szyby-w-plucach-skutki-covid-19-co-to-znaczy-i-jak-leczyc
-efekt mlecznej szyby (matowej szyby). – Płuca mają pęcherzyki przypominające winogrona, a cała reszta to jest śródmiąższ. Dochodzi do zwłóknienia miejsca, które normalnie powinno być tkanką elastyczną. Włóknieje otoczenie tych pęcherzyków, czyli łodyżki winogron. Wtedy spada wydolność płuc, co widać po danych spirometrycznych. One są istotne w procesie wymiany tlenowej – wskazuje mój rozmówca.
+Efekt mlecznej szyby (ang. \textit{Lung opacity}). – Płuca mają pęcherzyki przypominające winogrona, a cała reszta to jest śródmiąższ. Dochodzi do zwłóknienia miejsca, które normalnie powinno być tkanką elastyczną. Włóknieje otoczenie tych pęcherzyków, czyli łodyżki winogron. Wtedy spada wydolność płuc, co widać po danych spirometrycznych. One są istotne w procesie wymiany tlenowej – wskazuje mój rozmówca. \textbf{oskszeliki (przypominające łdyzki winogron) }
 Niestety, w takim przypadku mówimy już o poważnych dolegliwościach. Dochodzi do duszności, tachykardii czy uszkodzeń serca, które działa na zwiększonych obrotach.
 
 
 %-----------------------------------------------------------------------------------
-\subsection{Viral pneumonia}
-Wirusowe zapalenie płuc występuje najczęściej jako powikłanie przedłużającego się zakażenia grypowego lub grypopodobnego. Jego cechą charakterystyczną jest szerzenie się procesu zapalnego w tkance śródmiąższowej, a w mniejszym stopniu w świetle pęcherzyków płucnych. Stąd też stwierdzane zjawiska osłuchowe podczas badania płuc w tym typie zapalenia są znacznie słabiej wyrażone niż zmiany obserwowane w badaniu radiologicznym.
+\subsection{Wirusowe zapalenie płuc}
+Wirusowe zapalenie płuc (ang. \textit{Viral pneumonia}) występuje najczęściej jako powikłanie przedłużającego się zakażenia grypowego lub grypopodobnego. Jego cechą charakterystyczną jest szerzenie się procesu zapalnego w tkance śródmiąższowej, a w mniejszym stopniu w świetle pęcherzyków płucnych. Stąd też stwierdzane zjawiska osłuchowe podczas badania płuc w tym typie zapalenia są znacznie słabiej wyrażone niż zmiany obserwowane w badaniu radiologicznym.
 
 Wirusowe zapalenie płuc to schorzenie, które pojawia się zwykle jako powikłanie grypy, częściej dotyka dzieci niż osoby dorosłe. Zapalenie mogą wywoływać wirusy grypy, RVS lub adenowirusy. Charakterystyczną cechą wirusowego zapalenia płuc jest rozprzestrzenianie się procesu zapalnego w tkance śródmiąższowej, a mniej w świetle pęcherzyków płucnych. Choroba atakuje najczęściej w okresie jesienno-zimowym, gdy mamy do czynienia z epidemią grypy.
 
 %-----------------------------------------------------------------------------------
 \subsection{COVID-19}
 %PLAGIAT https://pl.wikipedia.org/wiki/COVID-19
-COVID-19 (od ang. coronavirus disease 2019)[6] – ostra choroba zakaźna układu oddechowego wywołana zakażeniem wirusem SARS-CoV-2[7][8][9]. Została po raz pierwszy rozpoznana i opisana w listopadzie 2019, w środkowych Chinach (miasto Wuhan, w prowincji Hubei) podczas serii zachorowań zapoczątkowujących pandemię tej choroby[10][11][12][13].
+COVID-19 (od ang. coronavirus disease 2019) – ostra choroba zakaźna układu oddechowego wywołana zakażeniem wirusem SARS-CoV-2. Została po raz pierwszy rozpoznana i opisana w listopadzie 2019, w środkowych Chinach (miasto Wuhan, w prowincji Hubei) podczas serii zachorowań zapoczątkowujących pandemię tej choroby.
 
-Standardową metodą diagnozowania zakażenia jest test łańcuchowej reakcji polimerazy w czasie rzeczywistym z odwrotną transkryptazą (RT-qPCR, real-time RT-PCR) wykonany z wymazu nosowo-gardłowego lub próbki plwociny, który dostarcza wyniki w czasie od kilku godzin do dwóch dni. Analiza przeciwciał z próbki surowicy krwi również może być wykorzystana jako metoda diagnostyczna, pozwalająca na otrzymanie wyniku w ciągu kilku dni[14]. Choroba może także zostać zdiagnozowana na podstawie oceny kombinacji objawów, czynników ryzyka oraz wyniku badania tomografii komputerowej klatki piersiowej, wykazującego cechy zapalenia płuc[15][16].
+Standardową metodą diagnozowania zakażenia jest test łańcuchowej reakcji polimerazy w czasie rzeczywistym z odwrotną transkryptazą (RT-qPCR, real-time RT-PCR) wykonany z wymazu nosowo-gardłowego lub próbki plwociny, który dostarcza wyniki w czasie od kilku godzin do dwóch dni. Analiza przeciwciał z próbki surowicy krwi również może być wykorzystana jako metoda diagnostyczna, pozwalająca na otrzymanie wyniku w ciągu kilku dni[14]. Choroba może także zostać zdiagnozowana na podstawie oceny kombinacji objawów, czynników ryzyka oraz wyniku badania tomografii komputerowej klatki piersiowej, wykazującego cechy zapalenia płuc.
 
 %===================================================================================
 \section{Uczenie maszynowe}
@@ -374,7 +397,7 @@ Do tego badacze pokazali także, że pewne neurony reagują wyłącznie na obraz
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.6\textwidth,keepaspectratio=true]{kora_wzrokowa}
-	\caption{}
+	\caption{Działanie kory wzrokowej \cite{geron}}
 	\label{kora_wzrokowa}
 \end{figure}
 
@@ -387,7 +410,7 @@ Do tej pory wszystkie analizowane przez nas wielowarstwowe sieci neuronowe miał
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.6\textwidth,keepaspectratio=true]{warstwa_splotowa}
-	\caption{}
+	\caption{Warstwy CNN \cite{geron}}
 	\label{warstwa_splotowa}
 \end{figure}
 
@@ -396,7 +419,7 @@ Neuron znajdujący się w wierszu $i$ oraz kolumnie $j$ danej warstwy jest poł�
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.6\textwidth,keepaspectratio=true]{padding}
-	\caption{}
+	\caption{Związek pomiędzy warstwami a uzupełnianiem zerami \cite{geron}}
 	\label{padding}
 \end{figure}
 
@@ -407,7 +430,7 @@ Możliwe jest również łączenie bardzo dużej warstwy wejściowej ze znacznie
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.6\textwidth,keepaspectratio=true]{step}
-	\caption{}
+	\caption{Redukcja wymiarowości za pomocą kroku o wartość 2 \cite{geron}}
 	\label{step}
 \end{figure}
 
@@ -422,7 +445,7 @@ wzorce. \cite{geron}
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.8\textwidth,keepaspectratio=true]{filters}
-	\caption{}
+	\caption{Uzyskiwanie map cech za pomocą filtrów \cite{geron}}
 	\label{filters}
 \end{figure}
 
@@ -456,7 +479,7 @@ Powyższy opis został podsumowany w równaniu \ref{conv_formula} widoczny duży
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.6\textwidth,keepaspectratio=true]{stosy_map_cech}
-	\caption{}
+	\caption{Warstwy splotowe zawierające wiele map cech, zdjęcie z trema kanałami barw \cite{geron}}
 	\label{stosy_map_cech}
 \end{figure}
 
@@ -470,7 +493,7 @@ Podobnie jak w przypadku warstw splotowych, każdy neuron stanowiący część w
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.8\textwidth,keepaspectratio=true]{max_pooling}
-	\caption{}
+	\caption{Maksymalizująca warstwa łącząca \cite{geron}}
 	\label{max_pooling}
 \end{figure}
 
@@ -709,52 +732,55 @@ W szóstym i ostatnim modelu, w odróżnieniu od piątego, dodałem jedną warst
 %-----------------------------------------------------------------------------------
 \subsection{Sprawdzenie prawidłowości klasyfikacji}
 
+Na rysunkach niżej próbowałem czy sieć reaguje tylko na płuca i choroby czy inne czynniki (literki, strzałki napisy...) mają wpływ.
+
+
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.8\textwidth,keepaspectratio=true]{fixing_image_exp}
-	\caption{}
+	\caption{W tym przypadku wyrównanie i usunięcie karteczki na dole nie spowodowało żadnych poważnych zmian w predykcji }
 	\label{}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.8\textwidth,keepaspectratio=true]{paper_covid_exp}
-	\caption{}
+	\caption{Usuniecie strzałek i literki prawym górnym rogu całkowicie zmieniły rezultat predykcji}
 	\label{}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.8\textwidth,keepaspectratio=true]{paper_l_o_exp}
-	\caption{}
+	\caption{Litera R nie wpływa na predykcje}
 	\label{}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.8\textwidth,keepaspectratio=true]{paper_v_p_exp}
-	\caption{}
+	\caption{Usuniecie koła nie powoduje zmian}
 	\label{}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.8\textwidth,keepaspectratio=true]{normal_L_exp}
-	\caption{}
+	\caption{Tutaj można wyciągnąć wniosek że predykcja zależy od literki w prawym górnym rogu}
 	\label{}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.8\textwidth,keepaspectratio=true]{covid_R_exp}
-	\caption{}
+	\caption{Dodanie literki R(literka była wzięta ze "zdrowego" zdjęcia nie powoduje zmian)}
 	\label{}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.8\textwidth,keepaspectratio=true]{google_normal_L_exp}
-	\caption{}
+	\caption{Akurat w tym przypadku litera nie wpływa na rezultat predykcji}
 	\label{}
 \end{figure}
 
