@@ -194,9 +194,9 @@ Ta praca jest zrobiona z użyciem uczenia maszynowego a zwłaszcza sieci neurono
 Zanim opiszę sieci neuronowe, chcę przedstawić co to jest neuron (komórka).
 
 \subsection{Neuron biologiczny}
-%??PLAGIAT?? Różne żródła
-Jak wiadomo mózg ludzki i większości innych organizmów składa się z malutkich komórek nerwowych, nazywanych neuron, zdolnych do przetwarzania i przewodzenia informacji w postaci sygnału elektrycznego. Neurony są podstawowym elementem układu nerwowego zwierząt. Najwięcej neuronów znajduje się w ośrodkowym układzie nerwowym, w skład którego wchodzi mózgowie oraz rdzeń kręgowy. \cite{neuroscience}
-Głównymi elementami neuronu są ciało komórki zawierające jądro i większość organelli komórkowych, wiele rozgałęziających się wypustek zwanych dendrytami oraz jedna bardzo długa wypustka -- akson. \cite{geron}
+
+Jak wiadomo mózg ludzki i większości innych organizmów składa się z malutkich komórek nerwowych, nazywanych neuron, zdolnych do przetwarzania i przewodzenia informacji w postaci sygnału elektrycznego. Podstawą nerwowego układu zwierząt są Neurony. mózgowie oraz rdzeń kręgowy stanowią ośrodkowy układ neuronowy który zawiera najwięcej neuronów. \cite{neuroscience}
+Jednostka komórkowa (neuron) skłąda się z ciała które zawiera jądro i różne organelli i wypustek: wiele mniejszych dendrytów, jedna długa -- akson. \cite{geron}
 
 \begin{figure}[H]
 	\centering
@@ -206,12 +206,12 @@ Głównymi elementami neuronu są ciało komórki zawierające jądro i większo
 	}
 \end{figure}
 
-Neurony biologiczne generują krótkie impulsy elektryczne zwane sygnałami, które są przenoszone wzdłuż aksonów i powodują uwalnianie w synapsach sygnałów chemicznych zwanych neuroprzekaźnikami. Kiedy komórka nerwowa otrzymuje dostateczną liczbę neuroprzekaźników od innych neuronów w ciągu kilku milisekund, to sama zaczyna wysyłać własne sygnały elektryczne (w rzeczywistości jest to uzależnione od neuroprzekaźników, gdyż niektóre z nich hamują aktywność komórki nerwowej). \cite{geron}
-Zatem mechanizm działania poszczególnych neuronów jest dość prosty, tworzą one jednak rozległą sieć składającą się z miliardów komórek nerwowych, gdzie zazwyczaj jeden neuron łączy się z tysiącami innych. Dzięki tak olbrzymiej sieci zawierającej proste komórki nerwowe mogą być wykonywane skomplikowane obliczenia.
+Interakcja między neuronami odbyła się za pomocą impulsów które generują się w ciele komórki i przenoszą się  wzdłuż aksonów. Związek dendryta i aksonu nazywa się synaps. Sygnały to są elektryczne impulsy, które powodują chemiczne reakcji w synapsach. Żeby komórka utworzyła sygnał musi otrzymać dostateczną ilość neuroprzekaźników (uwalnianie w synapsach). Neuroprzekaźniki generują się za pomocą sygnałów elektrycznych przenoszonych wzdłuż aksonów. Ile tych neuroprzekaźników trzeba dla generacji sygnału zależy od samych neuroprzekaźników, niektóre mogą hamować aktywność neuronu.\cite{geron}
+Neurony łączą się z dużo ilością innych neuronów, w rezultacie tworzy się wielka sieć. Dzięki tak olbrzymiej sieci zawierającej proste komórki nerwowe mogą być wykonywane skomplikowane obliczenia. \cite{geron}
 
 %-----------------------------------------------------------------------------------
 \subsection{Sztuczny neuron}
-W 1943 przez Warren S. McCulloch i Walter Pitts było zaproponowano bardzo prostą reprezentację neuronu sztucznego. On ma co najmniej jedno binarne wejście i dokładnie jedno binarne wyjście. Wyjście zostanie aktywne tylko wtedy kiedy będzie aktywna określona liczba wejść. \cite{mcculloch1943logical} Tak prosty model daje nam bardzo duże możliwości. Twórcy udowodnili że za pomocą takich neuronów jesteśmy w stanie zaprotestować sieć która rozwiąże dowolne zadanie logiczne.
+W 1943 Warren S. McCulloch i Walter Pitts opisali reprezentacje bardzo prostego neuronu sztucznego. Ma on jedno wyjście i wejście w formacie binarnym. Natomiast wejść może być więcej niż jedno ale wyjście tylko jedno. Komórka zostanie aktywna (będzie wysyłała sygnał dalej) jeśli na wejściu będzie określona ilość aktywnych sygnałów.\cite{mcculloch1943logical} Tak prosty model daje nam bardzo duże możliwości. Twórcy udowodnili że za pomocą takich neuronów jesteśmy w stanie zaprotestować sieć która rozwiąże dowolne zadanie logiczne.
 
 Frank Rossenblatt trochę zmodyfikował ten neuron.\newline
 Kluczowe zmiany:
@@ -221,6 +221,7 @@ Kluczowe zmiany:
 	\item Używanie funkcji skokowej na końcu
 	\item Dodatkowe obciążeniowe wejście(zawsze wysyła wartość 1) z własną wagą, tak zwany bias
 \end{itemize}
+
 Jednostka wylicza ważoną sumę sygnałów wejściowych, a następnie zostaję użyta funkcja aktywacji. Najczęściej zostaje użyta funkcja skokowa Heaviside`a (Rysunek \ref{Heaviside}) lub signum (Rysunek \ref{Signum}) .Przy użyciu skokowej funkcji aktywacji taki neuron można nazywać progową jednostką logiczną lub liniową jednostką progową (ang. \textit{Linear Treshod Unit} -- LTU). Działanie tej jednostki można matematycznie opisać w następujący sposób.\newline\newline
 $ y = \mathcal{H}(W^{T}X + b) $\newline \newline
 Gdzie: \newline
@@ -287,8 +288,8 @@ Signum, sgn (łac. signum „znak”) – funkcja zmiennej rzeczywistej, zdefini
 
 %-----------------------------------------------------------------------------------
 \subsection{Sigmoid}
-Funkcja sigmoidalna jest funkcją matematyczną mającą charakterystyczną krzywą w kształcie litery „S” lub krzywą sigmoidalną.
-Typowym przykładem funkcji sigmoidalnej jest funkcja logistyczna pokazana na rysunku \ref{Sigmoid} i zdefiniowana wzorem: 
+Kształt funkcji sigmoidalnej jest podobny do litery obróconej litery „S”.
+Przykład tej funkcji jest pokazana na rysunku \ref{Sigmoid} i zdefiniowana wzorem: 
 
 
 \begin{figure}[H]
@@ -306,7 +307,7 @@ Typowym przykładem funkcji sigmoidalnej jest funkcja logistyczna pokazana na ry
 
 %-----------------------------------------------------------------------------------
 \subsection{ReLU}
-Kolejną, popularną funkcją aktywacji jest ReLU (rectifier Linear Unit). Od swojego kształtu w mowie potocznej często nazywana jest funkcją rampy (bo i rzeczywiście - wygląda jak rampa).
+Kolejną, popularną funkcją aktywacji jest ReLU (rectifier Linear Unit). Po lewej stronie od osi Y jest równa 0 po prawej -- równomiernie rośnie
 \begin{equation}
 	ReLU(x) = 
 	\begin{cases}
@@ -344,7 +345,7 @@ Funkcja softmax przyjmuje jako dane wejściowe wektor z $K$ liczb rzeczywistych 
 
 %-----------------------------------------------------------------------------------
 \subsection{Entropia krzyżowa, Cross-Entropy}
-Entropia krzyżowa jest to funkcja kosztu. Oznacza odległość między dwoma rozkładami prawdopodobieństw.
+Entropia krzyżowa jest funkcją kosztu. Oznacza odległość między dwoma rozkładami prawdopodobieństw.
 
 \begin{center}
 	\begin{equation}	
@@ -422,8 +423,7 @@ Dla pierwszego etapu w swojej prace używam algorytmu propagacji wstecznej (ang.
 
 %===================================================================================
 \section{Propagacja wsteczna}
-%PLAGIAT
-Algorytm propagacji wstecznej stanowi dzisiaj podstawowy algorytm uczenia nadzorowanego wielowarstwowych jednokierunkowych sieci neuronowych. Podaje on przepis na zmianę wag w dowolnych połączeń elementów przetwarzających rozmieszczonych w sąsiednich warstwach sieci jednokierunkowej. Jest to algorytm oparty na minimalizacji sumy kwadratów błędów uczenia. Dzięki zastosowaniu specyficznego sposobu propagowania błędów uczenia sieci powstałych na jej wyjściu, tzn. przesyłania ich od warstwy wyjściowej do wejściowej, algorytm propagacji wstecznej stał się jednym z najskuteczniejszych algorytmów uczenia sieci. \cite{nn_jozef}
+Najbardziej popularnym algorytmem uczenia nadzorowanego jest propagacja wsteczna jak mówi jej nazwa ona przeprowadza coś wstecz, czyli od końca na początek. Tak naprawdę on jest stosowany tylko wielowarstwowych jednokierunkowych sieci neuronowych. To co on robi to przeprowadza błąd uczenia od wyjścia do wejścia, a dokładniej pochodną błędu, która pomaga zrozumieć w która stronę trzeba zmieniać parametry sieci żeby zmniejszyć błąd. \cite{nn_jozef}
 
 %-----------------------------------------------------------------------------------
 \subsection{Znależenie gradientu ostatniej warstwy}
@@ -481,10 +481,10 @@ Splotowe sieci, wymyśłone w latach 80 ubiegłego wieku, mogą ulepszyć sytuac
 
 %-----------------------------------------------------------------------------------
 \subsection{Struktura kory wzrokowej}
-%PLAGIAT
-David H. Hubel i Torsten Wiesel przeprowadzili szereg eksperymentów na kotach w latach 1958 \cite{David_1958} i 1959 \cite{David_1959}, dzięki którym poznaliśmy strukturę kory wzrokowej. Udowodnili oni w szczególności, że wiele neuronów składających się na korę wzrokową wyznacza lokalne pola recepcyjne, tzn. że reagują jedynie na bodźce wzrokowe mieszczące się w określonym rejonie pola wzrokowego (Rysunek \ref{kora_wzrokowa}). Pola recepcyjne poszczególnych neuronów mogą się na siebie nakładać i łącznie tworzą cale pole wzrokowe \cite{geron}
+Dzięki eksperymentom David H. Hubel nieprzeprowadzonych na kotach wiemy jak działa kora wzrokowa.\cite{David_1958} \cite{David_1959}
+Udowodnili one że każdy neuron odpowiada za swoje pole recepcyjne czyli określony rejon pola wzrokowego. I reagują tylko na obiekty, mieszczące się ich polu (Rysunek \ref{kora_wzrokowa}). \cite{geron}
 
-Do tego badacze pokazali także, że pewne neurony reagują wyłącznie na obrazy składające się z linii poziomych, a inne są pobudzane przez linie ułożone w inny sposób (dwa neurony mogą mieć to samo pole recepcyjne, ale reagować na inne ułożenie linii). Zauważono także, że niektóre komórki nerwowe mają większe pola recepcyjne i wykrywają bardziej skomplikowane kształty, stanowiące połączenie bardziej ogólnych wzorów. Poczynione obserwacje doprowadziły badaczy do wniosku, że neurony odpowiedzialne za rozpoznawanie bardziej skomplikowanych kształtów znajdują się na wyjściu sąsiadujących neuronów reagujących na prostsze bodźce wzrokowe (na rysunku \ref{kora_wzrokowa} każdy neuron jest połączony tylko z kilkoma neuronami z niższej warstwy). Taka archi tektura pozwala wykrywać wszelkie rodzaje skomplikowanych kształtów w obszarze pola wzrokowego. \cite{geron}
+Również było pokazane że neurony mimo tego że reaguj na określone pole jeszcze reagują na pewny kształt. Mogą to być zarówno linie powożone pod różnym kątem tak i inne figury. Pola recepcyjne mogą różnić się rozmiarem i skomplikowaniem kształtu na który reagują. Neurony, które są połączone z neuronami co reagują na proste kształty mogą wykrywać coś bardziej skomplikowanego. Tworzą one tak zwane warstwy gdzie każdy neuron poszczególnej warstwy jest połączony z kilkoma komórkami poprzedniej warstwy (rysunek \ref{kora_wzrokowa}). Taka architektura pozwala wykrywać wszelkie obiekty i kształty. \cite{geron}
 
 \begin{figure}[H]
 	\centering
@@ -495,10 +495,9 @@ Do tego badacze pokazali także, że pewne neurony reagują wyłącznie na obraz
 
 %-----------------------------------------------------------------------------------
 \subsection{Warstwy splotowe}
-%PLAGIAT
-Najistotniejszym składnikiem sieci CNN jest warstwa splotowa (konwolucyjna): neurony w pierwszej warstwie splotowej nie są połączone z każdym pikselem obrazu wejściowego, lecz wyłącznie z pikselami znajdującymi się w ich polu recepcyjnym (rysunek \ref{warstwa_splotowa}). Z kolei każdy neuron w drugiej warstwie splotowej łączy się wyłącznie z neuronami znajdującymi się w niewielkim obszarze pierwszej warstwy. Dzięki temu sieć może koncentrować się na ogólnych cechach w pierwszej warstwie ukrytej, następnie łączyć je w bardziej złożone kształty w drugiej warstwie ukrytej itd. Taka hierarchiczna struktura jest powszechnie spotykana na zdjęciach, co stanowi jedną z przyczyn tak dużej skuteczności sieci CNN w rozpoznawaniu obrazów. \cite{geron}
+Podstawą sieci splotowej (ang. \textit{Convolutional Neural Networt, CNN}) jest warstwa splotowa. Gdzie neurony tworzą taką samą architekturę jaka jest w prawdziwej biologicznej korze wzrokowej. Czyli wejście jest dwuwymiarowe, pierwsza warstwa jest połączona z wejściem w ten sposób że każdy neuron jest połączony ze swoim polem recepcyjnym. Z kolei każdy neuron w drugiej warstwie splotowej łączy się wyłącznie z neuronami znajdującymi się w niewielkim obszarze pierwszej warstwy.(rysunek \ref{warstwa_splotowa}).
+Przy takiej architekturze sieć rozpoznaje proste kształty w pierwszej warstwie i im głębiej wchodzimy tym bardziej skomplikowane kształty, formy, obiekty zostają sklasyfikowane. \cite{geron}
 
-Do tej pory wszystkie analizowane przez nas wielowarstwowe sieci neuronowe miały warstwy składające się z długich rzędów neuronów, a przed przekazaniem obrazu do sieci musieliśmy go przekształcić do postaci jednowymiarowej. Od teraz każda warstwa będzie dwuwymiarowa, co ułatwi nam obserwowanie związków pomiędzy neuronami a ich danymi wejściowymi. \cite{geron}
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.6\textwidth,keepaspectratio=true]{warstwa_splotowa}
@@ -507,7 +506,7 @@ Do tej pory wszystkie analizowane przez nas wielowarstwowe sieci neuronowe miał
 \end{figure}
 
 \subsection{Uzupełnianie zerami}
-Neuron znajdujący się w wierszu $i$ oraz kolumnie $j$ danej warstwy jest połączony z wyjściami neuronów poprzedniej warstwy zlokalizowanymi w rzędach od $i$ do $i+f_{h}-1$ i kolumnach od $j do j+f_{w}-1$, gdzie $f_{h}$ i $f_{w}$ oznaczają, odpowiednio, wysokość i szerokość pola recepcyjnego (rysunek \ref{padding}). W celu uzyskania takich samych wymiarów każdej warstwy najczęściej są dodawane zera wokół wejść, co zo stało pokazane na rysunku \ref{padding}. Proces ten nazywamy uzupełnianiem zerami (ang. \textit{zero padding}). \cite{geron}
+Przypuśćmy że każdy neuron ma pole 3*3 i pola neuronów nakładają się z krokiem w 1 piksel. To na wyjściu drugie warstwy będziemy mieli obraz rozmiaru o 1 piksel z każdej strony mniejszy od wejściowego obrazu. Żeby rozwiązać ten problem możemy rozszerzyć wejściowy obraz tak samo o jeden piksel z każdej strony. Żeby to zrobić możemy dopisać zera na brzegach obrazu. Ten proces nazywa się uzupełnianie zerami.
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.6\textwidth,keepaspectratio=true]{padding}
@@ -529,11 +528,12 @@ Możliwe jest również łączenie bardzo dużej warstwy wejściowej ze znacznie
 
 %-----------------------------------------------------------------------------------
 \subsection{Filtry}
-%PLAGIAT
-Wagi neuronu mogą być przedstawiane jako niewielki obraz o rozmiarze pola recepcyjnego. Na przykład na rysunku \ref{filters} widzimy dwa możliwe zbiory wag, tak zwane filtry (lub jądra splotowe, ang. \textit{convolution kernels}). Pierwszy filtr jest symbolizowany jako czarny kwadrat z białą pionową linią przechodzącą przez jego środek (jest to macierz o wymiarach $7 \times 7$ wypełniona zerami oprócz środkowej kolumny, która zawiera jedynki); neurony zawierające te wagi będą ignorować wszystkie elementy w polu recepcyjnym oprócz znajdujących się w środkowej pionowej linii (dane wejściowe znajdujące się poza tą linią będą przemnażane przez O). Drugi filtr wygląda podobnie; różnica polega na tym, że środkowa linia jest ułożona poziomo. Także w tym wypadku będą brane pod uwagę jedynie dane wejściowe znajdujące się w tej linii. \cite{geron}
+Filtry to są wagi neuronów w warstwach splotowych, mają postać obrazu wielkości pola recepcyjnego. Filtry pomagają wykrywać rożne kształty. Na rysunku \ref{filters} widzimy dwa przykłady filtrów: po lewej stronie mamy filtr, który ma białą pionową linie (jest narysowany obok strzałki). Po prawej stronie, natomiast, jest filtr z poziomą linią. Możemy sobie wyobrazić że przy stosowaniu filtru one jest nakładany na obraz w polu recepcyjnym wybranego neuronu, piksele które są pod białym kolorem dodają się do sumy tego neuronu, natomiast piksele, które podpadają pod czarny obszar filtru, nie mają żadnego znaczenia. 
 
-Jeśli wszystkie neurony w danej warstwie będą korzystać z tego samego filtra pionowego" (i takiego samego członu obciążenia), a my wczytamy do sieci obraz zaprezentowany na dole rysunku \ref{filters},to uzyskamy obraz widoczny w lewym górnym rogu rysunku. Po zastosowaniu tego filtru pionowe białe linie stają się wyraźniej widoczne, natomiast pozostała część obrazu zostaje rozmazana. Na zasadzie analogii otrzymujemy obraz widoczny w prawym górnym rogu rysunku po zastosowaniu filtru poziomego"; teraz z kolei białe poziome linie zostają wyostrzone, a reszta obrazu ulega ramazanu. Zatem warstwa wypełniona neuronami wykorzystującymi ten sam filtr daje nam mapę cech (ang. \textit{feature map}), dzięki której możemy dostrzec elementy najbardziej przypominające dany filtr. Nie musisz oczywiście definiować filtrów własnoręcznie - sieć CNN w czasie uczenia wyszukuje filtry najbardziej przydatne do danego zadania i uczy się łączyć je w bardziej złożone
-wzorce. \cite{geron}
+Jeśli wszystkie neurony w warstwie będą stosować filtr z pionową linią to uzyskamy obrazek po lewej stronie. Widać że wszystkie pionowe kształty zostają bardziej widoczne, wszystko inne zostaje rozmazane. Natomiast w prawym obrazku jest stosowany poziomy filtr, który wyróżnia tylko poziome kształty.
+
+Obraz który jest generowany za pomocą filtru splotowego nazywa się mapą cech.
+
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.8\textwidth,keepaspectratio=true]{filters}
@@ -543,16 +543,16 @@ wzorce. \cite{geron}
 
 %-----------------------------------------------------------------------------------
 \subsection{Stosy map cech}
+W rzeczywistości warstwy splotowe mają więcej niż dwa wymiary. Najczęstszej są one trójwymiarowe, są to stosy map cech o jednakowym wymiarze. Pole recepcyjne neuronu nie ulega zmianie, ale przebiega przez wszystkie mapy cech poprzednich warstw. Krótko mówiąc, warstwa splotowa równocześnie stosuje różne filtry na wejściach, dzięki czemu jest w stanie wykrywać wiele cech w dowolnym obszarze obrazu \cite{geron}
+
+Stosowanie jednakowych filtrów dla neuronów w jednej warstwie pozwala na znalezienie kształtu w różnych miejscach na zdjęciu. Na przykład, jak filtr będzie szukał litery "A" na zdjęciu to dla sieci splotowej nie ma znaczenia gzie ta litera jest rozmieszczona, natomiast normalna sieć z "fullyconected" warstwami jest w stanie odnaleźć tą literę tylko w jednym miejscu. I stosowanie filtru dla całej warstwy zmniejsza liczbę parametrów, dla tego że nie musimy pamiętać wagi każdego neuronu a tylko filtr, który znacznie mniej parametrów od ilości neuronów warstwie\cite{geron}
+
+Co więcej, obrazy wejściowe także mogą być wielowymiarowe, na przykład kolorowy obraz który ma trzy wymiary szerokość, wysokość, i kolor.Kolorowe zdjęcie ma standardowo trzy kanały (czerwony, zielony, niebieski) Czarno-białe obrazy mają tylko jeden kanał odcień szarości, ale istnieją zdjęcia, które mają więcej kanałow jak na przykład fotografie satelitarne utrwalające dodatkowe częstotliwości fal elektromagnetycznych . \cite{geron}
+
 %PLAGIAT
-Do tej pory dla uproszczenia przedstawialiśmy każdą warstwę splotową w postaci cienkiej, dwuwymiarowej warstwy, ale w rzeczywistości składa się ona z kilku map cech o identycznych rozmiarach, dlatego trójwymiarowe odwzorowanie jest bliższe rzeczywistości (rysunek \ref{stosy_map_cech}). W zakresie jednej mapy cech każdy neuron jest przydzielony do jednego piksela, a wszystkie tworzące ją neurony współdzielą te same parametry (wagi i człon obciążenia). Neurony w innych mapach cech mają odmienne wartości parametrów. Pole recepcyjne neuronu nie ulega zmianie, ale przebiega przez wszystkie mapy cech poprzednich warstw. Krótko mówiąc, warstwa splotowa równocześnie stosuje różne filtry na wejściach, dzięki czemu jest w stanie wykrywać wiele cech w dowolnym obszarze obrazu \cite{geron}
-
-Dzięki temu, że wszystkie neurony w mapie cech stosują te same parametry, znacznie zmniejsza się ich liczba w modelu, jednak co ważniejsze, oznacza to, że gdy sieć CNN nauczy się rozpoznawać wzorzec w jednym miejscu, będzie w stanie to robić również w innych lokacjach. Dla porównania, sieć GSN po nauczeniu się rozpoznawania wzorca w jednym miejscu nie potrafi tego przełożyć na inne obszary. \cite{geron}
-
-Co więcej, obrazy wejściowe także składają się z kilku warstw podrzędnych, po jednej na każdy kanał barw (ang. \textit{color channel}). Standardowo występują trzy kanały barw - czerwony, zielony i niebieski (ang, red, green, blue-RGB). Obrazy czarno-białe (w odcieniach szarości) zawierają tylko jeden kanał, ale istnieją też takie zdjęcia, które mogą mieć ich znacznie więcej - np. fotografie satelitarne utrwalające dodatkowe częstotliwości fal elektromagnetycznych (takie jak podczerwień). \cite{geron}
-
 W szczególności neuron zlokalizowany w rzędzie $i$ oraz kolumnie $j$ mapy cech $k$ w danej warstwie splotowej $l$ jest połączony z neuronami wcześniejszej warstwy $l-1$ umieszczonymi w rzędach od $i \times s_{h}$ do $i \times s_{h}+f_{h}-1$ i kolumnach od $j \times s_{w}$, do $j \times s+f_{w}-1$ we wszystkich mapach cech (warstwy $l-1$). Zwróć uwagę, że wszystkie neurony znajdujące się w tym samym rzędzie $i$ oraz kolumnie $j$, ale w innych mapach cech są połączone z wyjściami dokładnie tych samych neuronów poprzedniej warstwy. \cite{geron}
 
-Powyższy opis został podsumowany w równaniu \ref{conv_formula} widoczny duży wzór matematyczny służy do obliczania wyniku danego neuronu w warstwie splotowej. Z powodu dużej liczby indeksów równanie to nie wygląda zbyt elegancko, ale za jego pomocą jesteśmy w stanie uzyskać sumę ważoną wszystkich danych wejściowych wraz z członem obciążenia, \cite{geron}
+Podsumowanie tego opisu jest w równaniu \ref{conv_formula}
 
 \begin{center}
 	\begin{equation}	
@@ -577,10 +577,10 @@ Powyższy opis został podsumowany w równaniu \ref{conv_formula} widoczny duży
 
 %-----------------------------------------------------------------------------------
 \subsection{Warstwa łącząca (Max pooling)}
-%PLAGIAT
-Gdy już wiemy, jak działa warstwa splotowa, zrozumienie mechanizmu kryjącego się za warstwami łączącymi (ang. \textit{pooling layers}) nie powinno stanowić problemu. Ich celem jest pod próbkowanie (ang. \textit{subsample}) obrazu wejściowego w celu zredukowania obciążenia obliczeniowego. wykorzystania pamięci i liczby parametrów (a tym samym ograniczenia ryzyka przetrenowania). \cite{geron}
+Mechanizm działania tej warstwy jest podobny do działania filtrów splotowych. Każda jednostka tej warstwy ma wcześniej określone pole. Różnicą jest to że pola nie są nakładane na pola innych neuronów, są rozmieszczone jedno po drugim (można zobaczyć na rysunku \ref{max_pooling}). Wyjściem każdej jednostki będzie maksymalna wartość z pośród wartości na wejściu.
 
-Podobnie jak w przypadku warstw splotowych, każdy neuron stanowiący część warstwy łączącej łączy się z wyjściami określonej liczby neuronów warstwy poprzedniej, mieszczącej się w obszarze niewielkiego, prostokątnego pola recepcyjnego. Podobnie jak wcześniej, musimy tu rozmiar tego pola, wartość kroku, rodzaj uzupełniania zerami itd. Jednakże warstwa licząca nie zawiera żadnych wag; jej jedynym zadaniem jest gromadzenie danych wejściowych za pomocą jakiejś funkcji agregacyjnej, np. maksymalizującej lub uśredniającej. Na rysunku \ref{max_pooling} widzimy najpopularniejszy rodzaj - maksymalizującą warstwę łączącą (ang. \textit{max pooling layer}). W tym przykładzie korzystamy z jądra łączącego (ang. \textit{pooling kernel}) o rozmiarze $2 \times 2$, kroku o wartości 2 iz pominięciem uzupełniania zerami. Jedynie maksymalna wartość z każdego jądra zostaje przekazana do następnej warstwy natomiast pozostałe wartości wejściowe zostają odrzucone. Na przykład w lewym dolnym polu recepcyjnym na rysunku \ref{max_pooling} widzimy wartości wejściowe 1, 5, 3, 2, zatem tylko wartość maksymalna (5) zostanie przekazana do następnej warstwy. Z powodu kroku równego 2 obraz wyjściowy ma szerokość i wysokość o połowę mniejsze w porównaniu do obrazu wejściowego (zaokrąglamy tu w dól. ponieważ nie korzystamy z uzupełniania zerami). \cite{geron}
+Gdy już wiemy, jak działa warstwa splotowa, zrozumienie mechanizmu kryjącego się za warstwami łączącymi (ang. \textit{pooling layers}) nie powinno stanowić problemu. Ich celem jest pod próbkowanie (ang. \textit{subsample}) obrazu wejściowego w celu zredukowania obciążenia obliczeniowego. wykorzystania pamięci i liczby parametrów (a tym samym ograniczenia ryzyka przetrenowania).
+Na przykład w lewym dolnym polu recepcyjnym na rysunku \ref{max_pooling} widzimy wartości wejściowe 1, 5, 3, 2, zatem tylko wartość maksymalna (5) zostanie przekazana do następnej warstwy. \cite{geron}
 
 \begin{figure}[H]
 	\centering
@@ -592,16 +592,12 @@ Podobnie jak w przypadku warstw splotowych, każdy neuron stanowiący część w
 
 %-----------------------------------------------------------------------------------
 \subsection{Warstwa porzucenia (Dropout)}
-%PLAGIAT
-Najpopularniejszym sposobem do walki z przetrenowaniem w przypadku sieci neuronowych (w tym także konwolucyjne sieci neuronowe) jest porzucanie. Dropout polega na losowym ustawieniu wychodzących krawędzi ukrytych jednostek (neuronów tworzących ukryte warstwy) na 0 przy każdej aktualizacji fazy treningu. Metoda ta jest bardzo efektywna, ponieważ co każde przejście losowo wyłączane są połączenia. Dzięki temu sieć neuronowa nie nauczy się „na pamięć” zbyt szybko, ponieważ architektura co przeliczenie odrobinę się zmienia poprzez zerowanie losowych połączeń neuronów. \cite{jak_dziawaja_cnn}
-
-Po trenowaniu sieci, dropout jest usuwany. Czyli sieć działa normalnie, bez wyłączania połączeń.
+Ta warstwa stosuje się do zabezpieczenia "dobrego" uczenia, bez przetrenowania. Działa ona w ten sposób że losowo "usuwa",  połączenia między niektórymi neuronami. Jest to bardzo efektywne zabezpieczenie przed przetrenowaniem. Przy inicjalizacji tej warstwy określamy jaki procent połączeń będą "usuwane". Ważną rzeczą jest to że warstwę porzucenia stosujemy tylko w czasie uczenia. Po uczeniu t warstwa jest usuwana. Czyli sieć działa normalnie, bez wyłączania połączeń. \cite{jak_dziawaja_cnn}
 
 
 %-----------------------------------------------------------------------------------
 \subsection{Warstwa spłaszczająca (Flatten)}
-%PLAGIAT
-Jest to ważny krok. Ta warstwa przekształca naszą wielowymiarową warstwę w sieci w jednowymiarowy wektor. Robimy to po to, aby dopasować dane wejściowe w pełni połączonej warstwy do klasyfikacji. Na przykład tensor o wielkości (10, 10, 3) zostałby przekształcony w wektor o rozmiarze 300 (1, 300). \cite{jak_dziawaja_cnn}
+Jest to bardzo prosty i ważny krok. Taka warstwa przetwarza wielowymiarowe wejście w jednowymiarowy wektor. Stosuje się tego żeby połączyć warstwę splotową i w pewni połączoną. Na przykład tensor o wielkości (10, 10, 3) zostałby przekształcony w wektor o rozmiarze 300 (1, 300). \cite{jak_dziawaja_cnn}
 
 %===================================================================================
 \section{Implementacja}
@@ -724,7 +720,7 @@ Na rysunku \ref{covid_pediction} jest pokazana predykcja choroby na zdjęciu bez
 
 %-----------------------------------------------------------------------------------
 \subsection{Statystyki używania filtrów splotowych}
-Zobaczyłem że dużo filtrów dają czarny obrazek i chciałem sprawdzisz czy na pewno wszystkie filtry reagują na jakieś kształty. Napisałem skrypt który przeprowadził 1000 losowych obrazków ze zbioru testowego przez sieć i policzył średnie wartości otrzymanych map cech. Okazało się że nie wszystkie filtry działają poprawnie. Najprawdopodobniej jest to problem nazywany śmiercią ReLU. W czasie uczenia niektóre neurony trwale "giną", co znaczy, że jedynym przesyłanym sygnałem jest 0. Jeżeli zdarzy się taka sytuacja kiedy wagi neurony zostaną zaktualizowane tak że suma ważona sygnałów wejściowych dla tego neuronu przyjmie wartość ujemną, algorytm optymalizacji wag przestanie  na niego  wpływać ponieważ gradient funkcji ReLU wynosi 0 przy wartościach ujemnych. \cite{geron}
+Zobaczyłem że dużo filtrów dają czarny obrazek i chciałem sprawdzisz czy na pewno wszystkie filtry reagują na jakieś kształty. Napisałem skrypt który przeprowadził 1000 losowych obrazków ze zbioru testowego przez sieć i policzył średnie wartości otrzymanych map cech. Okazało się że nie wszystkie filtry działają poprawnie. Najprawdopodobniej jest to problem nazywany śmiercią ReLU. Neuron umiera kiedy zaczyna wysyłać zero bez względu na co on ma na wejściu. W przypadku kiedy neuron ma wagi które powodują że suma ważona będzie ujemna to algorytm uczenia nie będzie w tanie nic zmienić, dla tego że pochodna ReLU w tym miejscu jest 0. \cite{geron}
 
 \begin{figure}[H]
 	\centering
