@@ -5,50 +5,54 @@ The style file: plain.bst
 Database file #1: bibliografia.bib
 Warning--entry type for "jak_dziawaja_cnn" isn't style-file defined
 --line 107 of file bibliografia.bib
+Warning--entry type for "backprop_yt" isn't style-file defined
+--line 119 of file bibliografia.bib
+Warning--entry type for "backprop_yt_eng" isn't style-file defined
+--line 133 of file bibliografia.bib
 Warning--empty publisher in David_1958
 Warning--empty publisher in David_1959
 Warning--empty publisher in neuron_bio
 Warning--empty publisher in nn_jozef
 Warning--empty year in nn_jozef
-You've used 8 entries,
+You've used 11 entries,
             2118 wiz_defined-function locations,
-            533 strings with 4876 characters,
-and the built_in function-call counts, 1863 in all, are:
-= -- 155
-> -- 79
+            543 strings with 5172 characters,
+and the built_in function-call counts, 2474 in all, are:
+= -- 208
+> -- 100
 < -- 0
-+ -- 33
-- -- 24
-* -- 92
-:= -- 325
-add.period$ -- 22
-call.type$ -- 8
-change.case$ -- 29
++ -- 42
+- -- 30
+* -- 112
+:= -- 429
+add.period$ -- 29
+call.type$ -- 11
+change.case$ -- 40
 chr.to.int$ -- 0
-cite$ -- 13
-duplicate$ -- 91
-empty$ -- 177
-format.name$ -- 24
-if$ -- 386
+cite$ -- 16
+duplicate$ -- 117
+empty$ -- 243
+format.name$ -- 30
+if$ -- 518
 int.to.chr$ -- 0
-int.to.str$ -- 8
-missing$ -- 14
-newline$ -- 41
-num.names$ -- 16
-pop$ -- 75
+int.to.str$ -- 11
+missing$ -- 16
+newline$ -- 54
+num.names$ -- 22
+pop$ -- 101
 preamble$ -- 1
-purify$ -- 28
+purify$ -- 37
 quote$ -- 0
-skip$ -- 51
+skip$ -- 72
 stack$ -- 0
-substring$ -- 41
-swap$ -- 8
+substring$ -- 56
+swap$ -- 11
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 18
+type$ -- 28
 warning$ -- 5
-while$ -- 16
-width$ -- 9
-write$ -- 74
-(There were 6 warnings)
+while$ -- 22
+width$ -- 13
+write$ -- 100
+(There were 8 warnings)

@@ -1,4 +1,15 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{10}
+
+\bibitem{backprop_yt_eng}
+3blue1brown.
+\newblock What is backpropagation really doing? | chapter 3, deep learning,
+  2017.
+
+\bibitem{acta}
+Witold~Paluszyński Adam~Iwaniak, Małgorzata~Krówczyńska.
+\newblock {\em Użycie sieci neuronowych do klasyfikacji obszarów miejskich na
+  zdjęciach satelitarnych}.
+\newblock ACTA, 2020.
 
 \bibitem{neuroscience}
 M.~Bear, B.~Connors, and M.A. Paradiso.
@@ -30,6 +41,10 @@ Anna~Lorenc i~Jarek~BrykDelta.
 \bibitem{nn_jozef}
 Dariusz~Uciński Józef~Korbicz, Andrzej~Obuchowicz.
 \newblock {\em Sztuczne Sieci Neuronowe. Podstawy i zastosowania}.
+
+\bibitem{backprop_yt}
+Dmitrii Korobchenko.
+\newblock Propagacja wsteczna, 2021.
 
 \bibitem{jak_dziawaja_cnn}
 Mirosław Mamczur.

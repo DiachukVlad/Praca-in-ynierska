@@ -1,0 +1,39 @@
+\babel@toc {polish}{}
+\contentsline {section}{\numberline {1}Choroby płuc}{1}{}%
+\contentsline {subsection}{\numberline {1.1}Efekt mlecznej szyby}{1}{}%
+\contentsline {subsection}{\numberline {1.2}Zapalenie płuc}{1}{}%
+\contentsline {subsection}{\numberline {1.3}COVID-19}{2}{}%
+\contentsline {section}{\numberline {2}Uczenie maszynowe}{2}{}%
+\contentsline {section}{\numberline {3}Neuron}{3}{}%
+\contentsline {subsection}{\numberline {3.1}Neuron biologiczny}{3}{}%
+\contentsline {subsection}{\numberline {3.2}Sztuczny neuron}{3}{}%
+\contentsline {section}{\numberline {4}Funkcji użyte w pracy}{4}{}%
+\contentsline {subsection}{\numberline {4.1}Funkcja skokowa Heaviside’a}{4}{}%
+\contentsline {subsection}{\numberline {4.2}Signum}{5}{}%
+\contentsline {subsection}{\numberline {4.3}Sigmoid}{5}{}%
+\contentsline {subsection}{\numberline {4.4}ReLU}{5}{}%
+\contentsline {subsection}{\numberline {4.5}Softmax}{6}{}%
+\contentsline {subsection}{\numberline {4.6}Entropia krzyżowa, Cross-Entropy}{6}{}%
+\contentsline {section}{\numberline {5}Sieć neuronowa}{6}{}%
+\contentsline {section}{\numberline {6}Nadzorowane uczenie sztucznych sieci neuronowych}{8}{}%
+\contentsline {section}{\numberline {7}Propagacja wsteczna}{8}{}%
+\contentsline {subsection}{\numberline {7.1}Znależenie gradientu ostatniej warstwy}{8}{}%
+\contentsline {section}{\numberline {8}Splotowe sieci neuronowe}{9}{}%
+\contentsline {subsection}{\numberline {8.1}Struktura kory wzrokowej}{9}{}%
+\contentsline {subsection}{\numberline {8.2}Warstwy splotowe}{10}{}%
+\contentsline {subsection}{\numberline {8.3}Uzupełnianie zerami}{10}{}%
+\contentsline {subsection}{\numberline {8.4}Krok}{11}{}%
+\contentsline {subsection}{\numberline {8.5}Filtry}{11}{}%
+\contentsline {subsection}{\numberline {8.6}Stosy map cech}{12}{}%
+\contentsline {subsection}{\numberline {8.7}Warstwa łącząca (Max pooling)}{13}{}%
+\contentsline {subsection}{\numberline {8.8}Warstwa porzucenia (Dropout)}{14}{}%
+\contentsline {subsection}{\numberline {8.9}Warstwa spłaszczająca (Flatten)}{14}{}%
+\contentsline {section}{\numberline {9}Implementacja}{14}{}%
+\contentsline {subsection}{\numberline {9.1}Ostateczna struktura sieci}{14}{}%
+\contentsline {subsection}{\numberline {9.2}Historia uczenia}{15}{}%
+\contentsline {subsection}{\numberline {9.3}Stosy map cech}{16}{}%
+\contentsline {subsection}{\numberline {9.4}Statystyki używania filtrów splotowych}{19}{}%
+\contentsline {section}{\numberline {10}Eksperymenty}{20}{}%
+\contentsline {subsection}{\numberline {10.1}Różne struktury sieci}{20}{}%
+\contentsline {subsection}{\numberline {10.2}Sprawdzenie prawidłowości klasyfikacji}{24}{}%
+\contentsline {section}{\numberline {11}Wnioski}{27}{}%
